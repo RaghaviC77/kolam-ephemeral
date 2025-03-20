@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolam Navigation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Welcome to Kolam</h1>
+
+    <div class="kolam-container">
+        <canvas id="kolamCanvas"></canvas>
+        <div class="dot" style="top: 20%; left: 20%;" data-content="Explore Events"></div>
+        <div class="dot" style="top: 20%; left: 50%;" data-content="Kolam Exhibition"></div>
+        <div class="dot" style="top: 20%; left: 80%;" data-content="Talks & Conversations"></div>
+        <div class="dot" style="top: 50%; left: 20%;" data-content="Community Engagement"></div>
+        <div class="dot" style="top: 50%; left: 50%;" data-content="Curatorial Research"></div>
+        <div class="dot" style="top: 50%; left: 80%;" data-content="Meet the Artists"></div>
+    </div>
+    
+    <div id="content-box" class="content-box"></div>
+
+    <div class="button-container">
+        <button class="toggle-draw-button" onclick="toggleDrawing()">Draw / Erase Kolam</button>
+        <button class="language-toggle" onclick="toggleLanguage()">தமிழ் / English</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
