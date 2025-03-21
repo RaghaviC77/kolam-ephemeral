@@ -1,84 +1,118 @@
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kolam Ephemeral</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: white;
-            margin: 0;
-            position: relative;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kolam Ephemeral</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
 
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(5, 40px);
-            grid-template-rows: repeat(5, 40px);
-            gap: 10px;
-            justify-content: center;
-            align-items: center;
-        }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 30px);
+      grid-template-rows: repeat(5, 30px);
+      gap: 18px;
+    }
 
-        .dot {
-            width: 10px;
-            height: 10px;
-            background-color: black;
-            border-radius: 50%;
-        }
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: black;
+    }
 
-        .black { background-color: black; }
-        .red { background-color: red; }
-        .green { background-color: green; }
-        .blue { background-color: blue; }
+    .red {
+      background-color: #9b1c1c;
+    }
 
-        /* Border lines */
-        .border-line {
-            position: absolute;
-        }
+    .green {
+      background-color: #237a29;
+    }
 
-        .border-left {
-            width: 1px;
-            height: 90vh;
-            left: 2%;
-            top: 5vh;
-            background-color: red;
-        }
+    .blue {
+      background-color: #1e3a8a;
+    }
 
-        .border-top, .border-bottom {
-            width: 90vw;
-            height: 1px;
-            left: 5vw;
-            background-color: blue;
-        }
+    .border-line {
+      position: absolute;
+      z-index: 1;
+    }
 
-        .border-top {
-            top: 2%;
-        }
+    .border-left {
+      left: 1.5%;
+      top: 3%;
+      height: 94%;
+      width: 1px;
+      background-color: red;
+    }
 
-        .border-bottom {
-            bottom: 2%;
-        }
-    </style>
+    .border-top {
+      top: 3%;
+      left: 3%;
+      width: 94%;
+      height: 1px;
+      background-color: blue;
+    }
+
+    .border-bottom {
+      bottom: 3%;
+      left: 3%;
+      width: 94%;
+      height: 1px;
+      background-color: blue;
+    }
+  </style>
 </head>
 <body>
-    <div class="border-line border-left"></div>
-    <div class="border-line border-top"></div>
-    <div class="border-line border-bottom"></div>
-    
-    <div class="grid-container">
-        <div class="dot black"></div><div class="dot black"></div><div class="dot black"></div><div class="dot black"></div><div class="dot black"></div>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="dot"></div><div class="dot red"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="dot green"></div><div class="dot"></div><div class="dot blue"></div><div class="dot"></div><div class="dot"></div>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    </div>
+  <!-- Borders -->
+  <div class="border-line border-left"></div>
+  <div class="border-line border-top"></div>
+  <div class="border-line border-bottom"></div>
 
-    <script src="script.js"></script>
+  <!-- Dot Grid -->
+  <div class="grid-container">
+    <!-- Row 1 -->
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+
+    <!-- Row 2 -->
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+
+    <!-- Row 3 -->
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot red"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+
+    <!-- Row 4 -->
+    <div class="dot"></div>
+    <div class="dot green"></div>
+    <div class="dot"></div>
+    <div class="dot blue"></div>
+    <div class="dot"></div>
+
+    <!-- Row 5 -->
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
 </body>
 </html>
