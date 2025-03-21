@@ -17,31 +17,27 @@
 
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(5, 120px);
-      grid-template-rows: repeat(5, 120px);
-      gap: 40px;
+      grid-template-columns: repeat(5, 40px);
+      grid-template-rows: repeat(5, 40px);
+      gap: 20px;
       justify-content: center;
       align-items: center;
     }
 
     .dot {
-      width: 40px;
-      height: 40px;
       border-radius: 50%;
       background-color: black;
     }
 
-    .red {
-      background-color: #9b1c1c;
-    }
+    .dot-xs { width: 10px; height: 10px; }
+    .dot-sm { width: 14px; height: 14px; }
+    .dot-md { width: 18px; height: 18px; }
+    .dot-lg { width: 22px; height: 22px; }
+    .dot-xl { width: 26px; height: 26px; }
 
-    .green {
-      background-color: #237a29;
-    }
-
-    .blue {
-      background-color: #1e3a8a;
-    }
+    .red { background-color: #9b1c1c; }
+    .green { background-color: #237a29; }
+    .blue { background-color: #1e3a8a; }
 
     .border-line {
       position: absolute;
@@ -49,7 +45,7 @@
     }
 
     .border-left {
-      left: 5%;
+      left: 1.5%;
       top: 0;
       height: 100%;
       width: 3px;
@@ -57,7 +53,7 @@
     }
 
     .border-top {
-      top: 5%;
+      top: 1.5%;
       left: 0;
       width: 100%;
       height: 3px;
@@ -65,7 +61,7 @@
     }
 
     .border-bottom {
-      bottom: 5%;
+      bottom: 1.5%;
       left: 0;
       width: 100%;
       height: 3px;
@@ -82,39 +78,39 @@
   <!-- Dot Grid -->
   <div class="grid-container">
     <!-- Row 1 -->
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
+    <div class="dot dot-sm"></div>
+    <div class="dot dot-md"></div>
+    <div class="dot dot-lg"></div>
+    <div class="dot dot-md"></div>
+    <div class="dot dot-sm"></div>
 
     <!-- Row 2 -->
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-sm"></div>
+    <div class="dot dot-md"></div>
+    <div class="dot dot-sm"></div>
+    <div class="dot dot-xs"></div>
 
     <!-- Row 3 -->
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot red"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-sm"></div>
+    <div class="dot dot-md red"></div>
+    <div class="dot dot-sm"></div>
+    <div class="dot dot-xs"></div>
 
     <!-- Row 4 -->
-    <div class="dot"></div>
-    <div class="dot green"></div>
-    <div class="dot"></div>
-    <div class="dot blue"></div>
-    <div class="dot"></div>
+    <div class="dot dot-sm green"></div>
+    <div class="dot dot-sm"></div>
+    <div class="dot dot-sm"></div>
+    <div class="dot dot-sm blue"></div>
+    <div class="dot dot-sm"></div>
 
     <!-- Row 5 -->
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-sm"></div>
+    <div class="dot dot-md"></div>
+    <div class="dot dot-sm"></div>
+    <div class="dot dot-xs"></div>
   </div>
 </body>
 </html>
