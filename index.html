@@ -13,18 +13,21 @@
             height: 100vh;
             background-color: white;
             margin: 0;
+            position: relative;
         }
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(5, 40px);
-            grid-template-rows: repeat(5, 40px);
-            gap: 10px;
+            grid-template-columns: repeat(5, 50px);
+            grid-template-rows: repeat(5, 50px);
+            gap: 15px;
+            justify-content: center;
+            align-content: center;
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 15px;
+            height: 15px;
             background-color: black;
             border-radius: 50%;
         }
@@ -33,22 +36,76 @@
         .red { background-color: red; }
         .green { background-color: green; }
         .blue { background-color: blue; }
+
+        /* Border lines */
+        .border-line {
+            position: absolute;
+        }
+
+        .border-left {
+            width: 1px;
+            height: 90vh;
+            left: 2%;
+            top: 5vh;
+            background-color: red;
+        }
+
+        .border-top, .border-bottom {
+            width: 90vw;
+            height: 1px;
+            left: 5vw;
+            background-color: blue;
+        }
+
+        .border-top {
+            top: 2%;
+        }
+
+        .border-bottom {
+            bottom: 2%;
+        }
     </style>
 </head>
 <body>
+    <div class="border-line border-left"></div>
+    <div class="border-line border-top"></div>
+    <div class="border-line border-bottom"></div>
+    
     <div class="grid-container">
-        <!-- Generating the grid structure with dots -->
+        <!-- First Row -->
         <div class="dot black"></div>
         <div class="dot black"></div>
         <div class="dot black"></div>
+        <div class="dot black"></div>
+        <div class="dot black"></div>
+        
+        <!-- Second Row -->
         <div class="dot"></div>
         <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        
+        <!-- Third Row -->
         <div class="dot"></div>
         <div class="dot red"></div>
         <div class="dot"></div>
         <div class="dot"></div>
+        <div class="dot"></div>
+        
+        <!-- Fourth Row -->
         <div class="dot green"></div>
+        <div class="dot"></div>
         <div class="dot blue"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        
+        <!-- Fifth Row -->
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
     </div>
 
     <script src="script.js"></script>
