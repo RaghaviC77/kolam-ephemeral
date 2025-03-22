@@ -138,39 +138,6 @@
       gap: 3px;
       z-index: 3;
     }
-
-    .logo-dot {
-      width: 4px;
-      height: 4px;
-      background-color: black;
-      border-radius: 50%;
-    }
-
-    .site-title {
-      position: absolute;
-      top: 4.5%;
-      left: 7%;
-      font-size: 1rem;
-      color: black;
-      font-family: 'ShareTechMono-Regular', monospace;
-      z-index: 3;
-    }
-
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    body.drawing-enabled canvas {
-      pointer-events: auto;
-    }
-  </style>
-</head>
-<body>
-
  .logo-grid {
   position: absolute;
   top: 6%;
@@ -225,6 +192,39 @@
   <div class="logo-dot black"></div>
   <div class="logo-dot black"></div>
 </div>
+
+    .logo-dot {
+      width: 4px;
+      height: 4px;
+      background-color: black;
+      border-radius: 50%;
+    }
+
+    .site-title {
+      position: absolute;
+      top: 4.5%;
+      left: 7%;
+      font-size: 1rem;
+      color: black;
+      font-family: 'ShareTechMono-Regular', monospace;
+      z-index: 3;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    body.drawing-enabled canvas {
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+
 
 <!-- Site Title -->
 <div class="site-title">Kolam Ephemeral</div>
