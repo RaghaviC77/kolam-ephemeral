@@ -8,7 +8,7 @@
   <style>
     @font-face {
       font-family: 'KolamEphemeral';
-      src: url('Kolam_ephemeral_titleFont-Regular.woff2') format('woff2');
+      src: url('Kolam_ephemeraltitleFont-Regular.woff2') format('woff2');
       font-weight: normal;
       font-style: normal;
     }
@@ -41,24 +41,34 @@
       text-decoration: none;
       color: black;
     }
+.side-nav {
+  position: absolute;
+  left: 0;
+  top: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  font-family: 'KolamEphemeral', sans-serif;
+  font-size: 1.2rem;
+  z-index: 3;
+}
 
-    .side-nav {
-      position: absolute;
-      left: 2%;
-      top: 25%;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      font-family: 'KolamEphemeral', sans-serif;
-      font-size: 1.2rem;
-      z-index: 3;
-    }
+.side-nav a {
+  writing-mode: unset;         /* reset letter stacking */
+  transform: rotate(-90deg);   /* rotate word vertically */
+  transform-origin: left top;
+  text-decoration: none;
+  color: black;
+}
+
+  
 
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(5, 80px);
-      grid-template-rows: repeat(5, 80px);
-      gap: 30px;
+      grid-template-columns: repeat(5, 60px);
+      grid-template-rows: repeat(5, 60px);
+      gap: 20px;
       margin-top: 120px;
       justify-content: center;
       align-items: center;
@@ -89,7 +99,7 @@
       left: 5%;
       top: 0;
       height: 100%;
-      width: 3px;
+      width: 1.5px;
       background-color: red;
     }
 
@@ -97,7 +107,7 @@
       top: 6%;
       left: 0;
       width: 100%;
-      height: 3px;
+      height: 1.5px;
       background-color: blue;
     }
 
@@ -105,7 +115,7 @@
       bottom: 10%;
       left: 0;
       width: 100%;
-      height: 3px;
+      height: 1.5px;
       background-color: blue;
     }
 
@@ -143,39 +153,39 @@
   <!-- Dot Grid -->
   <div class="grid-container">
     <!-- Row 1 -->
+    <div class="dot dot-xs"></div>
     <div class="dot dot-sm"></div>
-    <div class="dot dot-xl"></div>
-    <div class="dot dot-xl"></div>
-    <div class="dot dot-xl"></div>
     <div class="dot dot-sm"></div>
+    <div class="dot dot-sm"></div>
+    <div class="dot dot-xs"></div>
 
     <!-- Row 2 -->
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-xl red"></div>
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-sm"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-sm red"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-xs"></div>
 
     <!-- Row 3 -->
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-xl green"></div>
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-xl blue"></div>
-    <div class="dot dot-sm"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-sm green"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-sm blue"></div>
+    <div class="dot dot-xs"></div>
 
     <!-- Row 4 -->
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-sm"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-xs"></div>
 
     <!-- Row 5 -->
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-sm"></div>
-    <div class="dot dot-sm"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-xs"></div>
+    <div class="dot dot-xs"></div>
   </div>
 
   <script>
