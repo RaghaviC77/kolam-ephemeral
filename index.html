@@ -24,16 +24,17 @@
       font-family: 'ShareTechMono-Regular', sans-serif;
     }
 
-    .nav {
-      position: absolute;
-      top: 1.5%;
-      right: 2%;
-      display: flex;
-      gap: 80px;
-      font-size: 1.3rem;
-      z-index: 3;
-      align-items: center;
-    }
+   .nav {
+  position: absolute;
+  top: 1.5%;
+  right: 4%;
+  display: flex;
+  gap: 80px;
+  font-size: 1.3rem;
+  z-index: 3;
+  align-items: center;
+}
+
 
     .nav a {
       text-decoration: none;
@@ -170,17 +171,75 @@
 </head>
 <body>
 
-  <!-- Mini Logo Grid (Top-Left Corner) -->
-  <div class="logo-grid">
-    <div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div>
-    <div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div>
-    <div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div>
-    <div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div>
-    <div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div><div class="logo-dot"></div>
-  </div>
+ .logo-grid {
+  position: absolute;
+  top: 6%;
+  left: 2%;
+  display: grid;
+  grid-template-columns: repeat(5, 20px);
+  grid-template-rows: repeat(5, 20px);
+  gap: 20px;
+  z-index: 3;
+}
+
+.logo-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.logo-dot.red { background-color: #9b1c1c; }
+.logo-dot.green { background-color: #237a29; }
+.logo-dot.blue { background-color: #1e3a8a; }
+.logo-dot.black { background-color: black; }
+
+<!-- Logo Grid (Top-Left Corner) -->
+<div class="logo-grid">
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot red"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+
+  <div class="logo-dot black"></div>
+  <div class="logo-dot green"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot blue"></div>
+  <div class="logo-dot black"></div>
+
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+  <div class="logo-dot black"></div>
+</div>
+
+<!-- Site Title -->
+<div class="site-title">Kolam Ephemeral</div>
 
   <!-- Site Title -->
-  <div class="site-title">Kolam Ephemeral</div>
+.site-title {
+  position: absolute;
+  top: 1.5%;
+  left: 14%;
+  font-size: 1.3rem;
+  color: black;
+  font-family: 'ShareTechMono-Regular', sans-serif;
+  z-index: 3;
+}
+
 
   <!-- Top Navigation Tabs -->
   <nav class="nav">
