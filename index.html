@@ -204,10 +204,15 @@
     let isDrawing = false;
     let drawingEnabled = false;
 
-    function enableDrawing(state) {
-      drawingEnabled = state;
-      document.body.classList.toggle('drawing-enabled', state);
-    }
+   function enableDrawing(state) {
+  drawingEnabled = state;
+  document.body.classList.toggle('drawing-enabled', state);
+
+  if (!state) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // clears the canvas when erase is clicked
+  }
+}
+
 
     canvas.addEventListener('mousedown', e => {
       if (!drawingEnabled) return;
