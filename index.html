@@ -21,11 +21,12 @@
       align-items: center;
       height: 100vh;
       position: relative;
+      padding-bottom: 40px;
     }
 
     .nav {
       position: absolute;
-      top: 1%;
+      top: 1.5%;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -36,9 +37,21 @@
       z-index: 2;
     }
 
-    .nav a {
+    .nav a, .side-nav a {
       text-decoration: none;
       color: black;
+    }
+
+    .side-nav {
+      position: absolute;
+      left: 2%;
+      top: 25%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      font-family: 'KolamEphemeral', sans-serif;
+      font-size: 1.2rem;
+      z-index: 3;
     }
 
     .grid-container {
@@ -46,9 +59,10 @@
       grid-template-columns: repeat(5, 80px);
       grid-template-rows: repeat(5, 80px);
       gap: 30px;
-      margin-top: 100px;
+      margin-top: 120px;
       justify-content: center;
       align-items: center;
+      z-index: 1;
     }
 
     .dot {
@@ -68,7 +82,7 @@
 
     .border-line {
       position: absolute;
-      z-index: 1;
+      z-index: 0;
     }
 
     .border-left {
@@ -80,7 +94,7 @@
     }
 
     .border-top {
-      top: 5%;
+      top: 6%;
       left: 0;
       width: 100%;
       height: 3px;
@@ -94,6 +108,13 @@
       height: 3px;
       background-color: blue;
     }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
   </style>
 </head>
 <body>
@@ -105,10 +126,19 @@
     <a href="#ஜன்னல்/search">ஜன்னல்/search</a>
   </nav>
 
+  <!-- Side Navigation for Draw/Erase -->
+  <div class="side-nav">
+    <a href="#" onclick="enableDrawing(true)">வரை/draw</a>
+    <a href="#" onclick="enableDrawing(false)">அழி/erase</a>
+  </div>
+
   <!-- Borders -->
   <div class="border-line border-left"></div>
   <div class="border-line border-top"></div>
   <div class="border-line border-bottom"></div>
+
+  <!-- Drawing Canvas -->
+  <canvas id="drawCanvas"></canvas>
 
   <!-- Dot Grid -->
   <div class="grid-container">
@@ -147,5 +177,45 @@
     <div class="dot dot-sm"></div>
     <div class="dot dot-sm"></div>
   </div>
+
+  <script>
+    const canvas = document.getElementById('drawCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    ctx.lineWidth = 3;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.8)';
+
+    let isDrawing = false;
+    let drawingEnabled = false;
+
+    function enableDrawing(state) {
+      drawingEnabled = state;
+    }
+
+    canvas.addEventListener('mousedown', e => {
+      if (!drawingEnabled) return;
+      isDrawing = true;
+      ctx.beginPath();
+      ctx.moveTo(e.clientX, e.clientY);
+    });
+
+    canvas.addEventListener('mousemove', e => {
+      if (!isDrawing || !drawingEnabled) return;
+      ctx.lineTo(e.clientX, e.clientY);
+      ctx.stroke();
+    });
+
+    canvas.addEventListener('mouseup', () => {
+      if (!drawingEnabled) return;
+      isDrawing = false;
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+      if (!drawingEnabled) return;
+      isDrawing = false;
+    });
+  </script>
 </body>
 </html>
