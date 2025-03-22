@@ -1,76 +1,88 @@
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color:#f8f3ef;
-    color: white;
-    text-align: center;
-    font-family: 'Ephesis', cursive;
-    position: relative;
-    touch-action: none;
-}
-
-.kolam-container {
-    position: relative;
-    width: 80vw;
-    height: 60vh;
-}
-
-
-
-.dot {
-    width: 12px;
-    height: 12px;
-    background-color: white;
-    border-radius: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    z-index: 10;
-    transition: transform 0.3s ease-in-out;
-}
-
-.dot:hover {
-    transform: scale(1.5);
-}
-
-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    z-index: 5;
-    touch-action: none;
-}
 
 @font-face {
-    font-family: 'KolamEphemeralTitle';
-    src: url('Kolam_ephemeral_titleFont-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'KolamEphemeral';
+  src: url('Kolam_ephemeral_titleFont-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
-/* Apply the font to titles */
-h1, h2, h3 {
-    font-family: 'KolamEphemeralTitle', sans-serif;
-    font-weight: normal;
+body {
+  margin: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  position: relative;
 }
 
-.toggle-draw-button, .language-toggle {
-    padding: 10px 15px;
-    background: white;
-    color: black;
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
-    margin: 5px;
-    transition: 0.3s ease-in-out;
+.nav {
+  position: absolute;
+  top: 1%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding-top: 10px;
+  font-family: 'KolamEphemeral', sans-serif;
+  font-size: 1.3rem;
+  z-index: 2;
 }
 
-.toggle-draw-button:hover, .language-toggle:hover {
-    background: #f5c242;
+.nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 120px);
+  grid-template-rows: repeat(5, 120px);
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  border-radius: 50%;
+  background-color: black;
+}
+
+.dot-xs { width: 10px; height: 10px; }
+.dot-sm { width: 26px; height: 26px; }
+.dot-md { width: 18px; height: 18px; }
+.dot-lg { width: 22px; height: 22px; }
+.dot-xl { width: 35px; height: 35px; }
+
+.red { background-color: #9b1c1c; }
+.green { background-color: #237a29; }
+.blue { background-color: #1e3a8a; }
+
+.border-line {
+  position: absolute;
+  z-index: 1;
+}
+
+.border-left {
+  left: 5%;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color: red;
+}
+
+.border-top {
+  top: 5%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: blue;
+}
+
+.border-bottom {
+  bottom: 10%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: blue;
 }
