@@ -5,16 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kolam Ephemeral</title>
   <style>
+    @font-face {
+      font-family: 'KolamEphemeral';
+      src: url('Kolam_ephemeral_titleFont-Regular.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     body {
       margin: 0;
       background-color: white;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       height: 100vh;
       position: relative;
     }
 
+    .nav {
+      position: absolute;
+      top: 1%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding-top: 10px;
+      font-family: 'KolamEphemeral', sans-serif;
+      font-size: 1.3rem;
+      z-index: 2;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: black;
+    }
 
     .grid-container {
       display: grid;
@@ -71,6 +95,14 @@
   </style>
 </head>
 <body>
+  <!-- Navigation Tabs -->
+  <nav class="nav">
+    <a href="#about">about</a>
+    <a href="#contact">contact</a>
+    <a href="#aesthetics">aesthetics</a>
+    <a href="#search">search</a>
+  </nav>
+
   <!-- Borders -->
   <div class="border-line border-left"></div>
   <div class="border-line border-top"></div>
