@@ -27,8 +27,8 @@
     }
 
     section {
-      width: 90%;
-      padding: 100px 20px;
+      width: 100%;
+      padding: 100px 5%;
       border-top: 1.5px solid #1e3a8a;
       box-sizing: border-box;
       position: relative;
@@ -151,13 +151,27 @@
     body.drawing-enabled canvas {
       pointer-events: auto;
     }
+
+    .gallery-container {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 40px 0;
+    }
+
+    .gallery-container img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 8px;
+      scroll-snap-align: start;
+    }
   </style>
 </head>
 <body>
-  <!-- Red Left Border Line -->
   <div class="border-line border-left"></div>
 
-  <!-- Mini Logo Grid -->
   <div class="logo-grid">
     <div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
     <div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot blue"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
@@ -166,10 +180,8 @@
     <div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
   </div>
 
-  <!-- Site Title -->
   <div class="site-title">Kolam Ephemeral</div>
 
-  <!-- Top Nav -->
   <nav class="nav">
     <a href="#threshold">வாசல்/threshold</a>
     <a href="#kolamnotebook">கோல.நோட்டு/kolamnotebook</a>
@@ -177,49 +189,22 @@
     <input type="text" class="search-box" placeholder="ஜன்னல்/search">
   </nav>
 
-  <!-- Side Nav -->
   <div class="side-nav">
     <a href="#" onclick="enableDrawing(true)">வரை/draw</a>
     <a href="#" onclick="enableDrawing(false)">அழி/erase</a>
   </div>
 
-  <!-- Canvas -->
   <canvas id="drawCanvas"></canvas>
 
-  <!-- Dot Grid (Updated with Colored Center Dots) -->
-  <div class="grid-container">
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-xl black"></div>
-    <div class="dot dot-xl black"></div>
-    <div class="dot dot-xl black"></div>
-    <div class="dot dot-sm black"></div>
+  <!-- New Aesthetic Scroll Gallery -->
+  <section id="aesthetics">
+    <div class="gallery-container">
+      <img src="/mnt/data/ABD82D8E-D942-49A7-BA09-928822831C76.JPEG" alt="gallery image 1">
+      <img src="/mnt/data/5764F531-122D-4989-BFD6-E39FBE043355.JPG" alt="gallery image 2">
+      <img src="/mnt/data/57ACB1EE-4483-43F0-89B3-5E99F8813817.JPG" alt="gallery image 3">
+    </div>
+  </section>
 
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-xl red"></div>
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-sm black"></div>
-
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-xl green"></div>
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-xl blue"></div>
-    <div class="dot dot-sm black"></div>
-
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-sm black"></div>
-
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-sm black"></div>
-    <div class="dot dot-sm black"></div>
-  </div>
-
-  <!-- Sections -->
   <section id="threshold">
     <h2>வாசல் / Threshold</h2>
     <p>Content for threshold section goes here...</p>
