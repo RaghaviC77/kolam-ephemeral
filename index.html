@@ -1,224 +1,272 @@
-<!DOCTYPE html>
+Code before content: 
+
+
+Updated code, Let's start editing and adding contents now. I want this to be a single page website, with equally spaced blue horizontal lines seperating each section, resembling a notebook. When navs are clicked it should just hover down to that section. : <!DOCTYPE html>
 <html lang="ta">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kolam Ephemeral</title>
-  <style>
-    @font-face {
-      font-family: 'ShareTechMono-Regular';
-      src: url('ShareTechMono-Regular.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kolam Ephemeral</title>
+<style>
+@font-face {
+font-family: 'ShareTechMono-Regular';
+src: url('ShareTechMono-Regular.woff2') format('woff2');
+font-weight: normal;
+font-style: normal;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+body {
+margin: 0;
+background-color: #dfdfdfd5;
+font-family: 'ShareTechMono-Regular', sans-serif;
+height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+position: relative;
+}
 
-    body {
-      margin: 0;
-      background-color: #dfdfdfd5;
-      font-family: 'ShareTechMono-Regular', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
+/* Logo Grid */
+.logo-grid {
+position: absolute;
+top: 1%;
+left: 1%;
+display: grid;
+grid-template-columns: repeat(5, 5px);
+grid-template-rows: repeat(5, 5px);
+gap: 4px;
+z-index: 3;
+}
 
-    section {
-      width: 90%;
-      padding: 100px 20px;
-      border-bottom: 2px solid #1e3a8a;
-      box-sizing: border-box;
-      position: relative;
-    }
+.logo-dot {
+width: 6px;
+height: 6px;
+border-radius: 50%;
+}
 
-    .logo-grid {
-      position: absolute;
-      top: 1%;
-      left: 1%;
-      display: grid;
-      grid-template-columns: repeat(5, 5px);
-      grid-template-rows: repeat(5, 5px);
-      gap: 4px;
-      z-index: 3;
-    }
+.black { background-color: black; }
+.red { background-color: #9b1c1c; }
+.green { background-color: #237a29; }
+.blue { background-color: #1e3a8a; }
 
-    .logo-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-    }
+.site-title {
+position: absolute;
+top: 1.75%;
+left: 6%;
+font-size: 1.3rem;
+color: black;
+z-index: 3;
+}
 
-    .black { background-color: black; }
-    .red { background-color: #9b1c1c; }
-    .green { background-color: #237a29; }
-    .blue { background-color: #1e3a8a; }
+.nav {
+position: absolute;
+top: 1.5%;
+right: 4%;
+display: flex;
+gap: 50px;
+font-size: 1.2rem;
+z-index: 4;
+align-items: right;
+}
 
-    .site-title {
-      position: absolute;
-      top: 1.75%;
-      left: 6%;
-      font-size: 1.3rem;
-      color: black;
-      z-index: 3;
-    }
+.nav a {
+text-decoration: none;
+color: black;
+}
 
-    .nav {
-      position: fixed;
-      top: 1.5%;
-      right: 4%;
-      display: flex;
-      gap: 50px;
-      font-size: 1.2rem;
-      z-index: 4;
-      background: rgba(255,255,255,0.8);
-      padding: 5px;
-      border-radius: 8px;
-    }
+.search-box {
+border-radius: 12px;
+padding: 5px 10px;
+border: 1px solid #ccc;
+font-family: 'ShareTechMono-Regular', monospace;
+font-size: 1rem;
+}
 
-    .nav a {
-      text-decoration: none;
-      color: black;
-    }
+.side-nav {
+position: absolute;
+left: 2.5%;
+top: 35%;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 120px;
+font-size: 1.2rem;
+z-index: 3;
+}
 
-    .search-box {
-      border-radius: 12px;
-      padding: 5px 10px;
-      border: 1px solid #ccc;
-      font-family: 'ShareTechMono-Regular', monospace;
-      font-size: 1rem;
-    }
+.side-nav a {
+transform: rotate(-90deg);
+transform-origin: left center;
+text-decoration: none;
+color: black;
+}
 
-    .side-nav {
-      position: fixed;
-      left: 2.5%;
-      top: 35%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 120px;
-      font-size: 1.2rem;
-      z-index: 3;
-    }
+.border-line {
+position: absolute;
+z-index: 0;
+}
 
-    .side-nav a {
-      transform: rotate(-90deg);
-      transform-origin: left center;
-      text-decoration: none;
-      color: black;
-    }
+.border-left {
+left: 5%;
+top: 0;
+height: 100%;
+width: 1.5px;
+background-color: red;
+}
 
-    .dot {
-      border-radius: 50%;
-    }
+.border-top {
+top: 6%;
+left: 0;
+width: 100%;
+height: 1.5px;
+background-color: blue;
+}
 
-    .dot-sm { width: 10px; height: 10px; }
-    .dot-xl { width: 20px; height: 20px; }
+.border-bottom {
+bottom: 30%;
+left: 0;
+width: 100%;
+height: 1px;
+background-color: blue;
+}
 
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 2;
-      pointer-events: none;
-    }
+.grid-container {
+display: grid;
+grid-template-columns: repeat(5, 60px);
+grid-template-rows: repeat(5, 60px);
+gap: 20px;
+margin-top: 200px;
+justify-content: center;
+align-items: center;
+place-items: center;
+z-index: 1;
+}
 
-    body.drawing-enabled canvas {
-      pointer-events: auto;
-    }
+.dot {
+border-radius: 50%;
+}
 
-    .border-left {
-      position: absolute;
-      left: 5%;
-      top: 0;
-      height: 100%;
-      width: 1.5px;
-      background-color: #9b1c1c;
-      z-index: 1;
-    }
-  </style>
+.black { background-color: black; }
+
+.dot-sm { width: 10px; height: 10px; }
+.dot-xl { width: 20px; height: 20px; }
+
+canvas {
+position: absolute;
+top: 0;
+left: 0;
+z-index: 2;
+pointer-events: none;
+}
+
+body.drawing-enabled canvas {
+pointer-events: auto;
+}
+</style>
 </head>
 <body>
 
-  <!-- Red Left Border Line -->
-  <div class="border-left"></div>
+<!-- Mini Logo Grid -->
+<div class="logo-grid">
+<div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
+<div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot blue"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
+<div class="logo-dot black"></div><div class="logo-dot red"></div><div class="logo-dot black"></div><div class="logo-dot blue"></div><div class="logo-dot black"></div>
+<div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot green"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
+<div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
+</div>
 
-  <!-- Mini Logo Grid -->
-  <div class="logo-grid">
-    <!-- logo-dot divs -->
-  </div>
+<!-- Site Title -->
+<div class="site-title">Kolam Ephemeral</div>
 
-  <!-- Site Title -->
-  <div class="site-title">Kolam Ephemeral</div>
+<!-- Top Nav -->
+<nav class="nav">
+<a href="#வாசல்/threshold">வாசல்/threshold</a>
+<a href="#கோல.நோட்டு/kolamnotebook">கோல.நோட்டு/kolamnotebook</a>
+<a href="#கொஞ்சம்.மாவு.தரியா/resources">கொஞ்சம்.மாவு.தரியா/resources</a>
+<input type="text" class="search-box" placeholder="ஜன்னல்/search">
+</nav>
 
-  <!-- Top Nav -->
-  <nav class="nav">
-    <a href="#threshold">வாசல்/threshold</a>
-    <a href="#kolamnotebook">கோல.நோட்டு/kolamnotebook</a>
-    <a href="#resources">கொஞ்சம்.மாவு.தரியா/resources</a>
-    <input type="text" class="search-box" placeholder="ஜன்னல்/search">
-  </nav>
+<!-- Draw/Erase -->
+<div class="side-nav">
+<a href="#" onclick="enableDrawing(true)">வரை/draw</a>
+<a href="#" onclick="enableDrawing(false)">அழி/erase</a>
+</div>
 
-  <!-- Side Nav -->
-  <div class="side-nav">
-    <a href="#" onclick="enableDrawing(true)">வரை/draw</a>
-    <a href="#" onclick="enableDrawing(false)">அழி/erase</a>
-  </div>
+<!-- Borders -->
+<div class="border-line border-left"></div>
+<div class="border-line border-top"></div>
+<div class="border-line border-bottom"></div>
 
-  <!-- Canvas -->
-  <canvas id="drawCanvas"></canvas>
+<!-- Canvas -->
+<canvas id="drawCanvas"></canvas>
 
-  <!-- Sections -->
-  <section id="threshold">
-    <h2>வாசல் / Threshold</h2>
-    <p>Content for threshold section goes here...</p>
-  </section>
+<!-- Dot Grid (Updated with Colored Center Dots) -->
+<div class="grid-container">
+<div class="dot dot-sm black"></div>
+<div class="dot dot-xl black"></div>
+<div class="dot dot-xl black"></div>
+<div class="dot dot-xl black"></div>
+<div class="dot dot-sm black"></div>
 
-  <section id="kolamnotebook">
-    <h2>கோல.நோட்டு / Kolam Notebook</h2>
-    <p>Content for kolam notebook section goes here...</p>
-  </section>
+<div class="dot dot-sm black"></div>
+<div class="dot dot-sm black"></div>
+<div class="dot dot-xl red"></div>
+<div class="dot dot-sm black"></div>
+<div class="dot dot-sm black"></div>
 
-  <section id="resources">
-    <h2>கொஞ்சம் மாவு தரியா / Resources</h2>
-    <p>Content for resources section goes here...</p>
-  </section>
+<div class="dot dot-sm black"></div>
+<div class="dot dot-xl green"></div>
+<div class="dot dot-sm black"></div>
+<div class="dot dot-xl blue"></div>
+<div class="dot dot-sm black"></div>
 
-  <script>
-    const canvas = document.getElementById('drawCanvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    ctx.lineWidth = 3;
-    ctx.lineCap = 'round';
-    ctx.strokeStyle = 'rgba(0, 0, 0, 0.8)';
+<div class="dot dot-sm black"></div>
+<div class="dot dot-sm black"></div>
+<div class="dot dot-sm black"></div>
+<div class="dot dot-sm black"></div>
+<div class="dot dot-sm black"></div>
 
-    let isDrawing = false;
-    let drawingEnabled = false;
+<div class="dot dot-sm black"></div>
+<div class="dot dot-sm black"></div>
+<div class="dot dot-sm black"></div>
+<div class="dot dot-sm black"></div>
+<div class="dot dot-sm black"></div>
+</div>
 
-    function enableDrawing(state) {
-      drawingEnabled = state;
-      document.body.classList.toggle('drawing-enabled', state);
-      if (!state) ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
 
-    canvas.addEventListener('mousedown', e => {
-      if (!drawingEnabled) return;
-      isDrawing = true;
-      ctx.beginPath();
-      ctx.moveTo(e.clientX, e.clientY);
-    });
+<script>
+const canvas = document.getElementById('drawCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+ctx.lineWidth = 3;
+ctx.lineCap = 'round';
+ctx.strokeStyle = 'rgba(0, 0, 0, 0.8)';
 
-    canvas.addEventListener('mousemove', e => {
-      if (!isDrawing || !drawingEnabled) return;
-      ctx.lineTo(e.clientX, e.clientY);
-      ctx.stroke();
-    });
+let isDrawing = false;
+let drawingEnabled = false;
 
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mouseleave', () => isDrawing = false);
-  </script>
+function enableDrawing(state) {
+drawingEnabled = state;
+document.body.classList.toggle('drawing-enabled', state);
+if (!state) ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+canvas.addEventListener('mousedown', e => {
+if (!drawingEnabled) return;
+isDrawing = true;
+ctx.beginPath();
+ctx.moveTo(e.clientX, e.clientY);
+});
+
+canvas.addEventListener('mousemove', e => {
+if (!isDrawing || !drawingEnabled) return;
+ctx.lineTo(e.clientX, e.clientY);
+ctx.stroke();
+});
+
+canvas.addEventListener('mouseup', () => isDrawing = false);
+canvas.addEventListener('mouseleave', () => isDrawing = false);
+</script>
 </body>
 </html>
