@@ -26,6 +26,16 @@
       position: relative;
     }
 
+    .top-blue-line {
+      position: absolute;
+      top: 6%;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: #1e3a8a;
+      z-index: 1;
+    }
+
     section {
       width: 100%;
       padding: 100px 5%;
@@ -171,6 +181,7 @@
 </head>
 <body>
   <div class="border-line border-left"></div>
+  <div class="top-blue-line"></div>
 
   <div class="logo-grid">
     <div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
@@ -196,7 +207,40 @@
 
   <canvas id="drawCanvas"></canvas>
 
-  <!-- New Aesthetic Scroll Gallery -->
+  <!-- Dot Grid (restored at top center) -->
+  <div class="grid-container">
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-xl black"></div>
+    <div class="dot dot-xl black"></div>
+    <div class="dot dot-xl black"></div>
+    <div class="dot dot-sm black"></div>
+
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-xl red"></div>
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-sm black"></div>
+
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-xl green"></div>
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-xl blue"></div>
+    <div class="dot dot-sm black"></div>
+
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-sm black"></div>
+
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-sm black"></div>
+    <div class="dot dot-sm black"></div>
+  </div>
+
+  <!-- Aesthetic Gallery -->
   <section id="aesthetics">
     <div class="gallery-container">
       <img src="/mnt/data/ABD82D8E-D942-49A7-BA09-928822831C76.JPEG" alt="gallery image 1">
