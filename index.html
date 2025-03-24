@@ -100,7 +100,7 @@
     }
 
     .side-nav {
-      position: absolute;
+      position: fixed;
       left: 2.5%;
       top: 35%;
       display: flex;
@@ -108,7 +108,7 @@
       align-items: center;
       gap: 120px;
       font-size: 1.2rem;
-      z-index: 3;
+      z-index: 10;
     }
 
     .side-nav a {
@@ -177,6 +177,11 @@
       border-radius: 8px;
       scroll-snap-align: start;
     }
+
+    .section-heading {
+      padding-left: 60px;
+      margin-top: 60px;
+    }
   </style>
 </head>
 <body>
@@ -207,7 +212,7 @@
 
   <canvas id="drawCanvas"></canvas>
 
-  <!-- Dot Grid (restored at top center) -->
+  <!-- Dot Grid -->
   <div class="grid-container">
     <div class="dot dot-sm black"></div>
     <div class="dot dot-xl black"></div>
@@ -240,38 +245,40 @@
     <div class="dot dot-sm black"></div>
   </div>
 
-<section id="threshold">
-  <h2>வாசல் / Threshold</h2>
-  <p>Content for threshold section goes here...</p>
-</section>
+  <div style="height: 100px;"></div>
 
-<section id="kolamnotebook">
-  <h2>கோல.நோட்டு / Kolam Notebook</h2>
-  <p>Content for kolam notebook section goes here...</p>
-</section>
+  <section id="threshold">
+    <h2 class="section-heading">வாசல் / Threshold</h2>
+    <p style="padding-left: 60px;">Content for threshold section goes here...</p>
+  </section>
 
-<section id="resources">
-  <h2>கொஞ்சம் மாவு தரியா / Resources</h2>
-  <p>Content for resources section goes here...</p>
-</section>
+  <section id="kolamnotebook">
+    <h2 class="section-heading">கோல.நோட்டு / Kolam Notebook</h2>
+    <p style="padding-left: 60px;">Content for kolam notebook section goes here...</p>
+  </section>
 
-<!-- Aesthetic Gallery (Moved to bottom with scroll fix) -->
-<section id="aesthetics">
-  <h2>அழகு / Aesthetics</h2>
-  <div class="gallery-container" style="overflow-x: auto; white-space: nowrap;">
-    <img src="Image3.jpg" alt="gallery image 3">
-    <img src="Image5.jpg" alt="gallery image 5">
-    <img src="Image6.jpg" alt="gallery image 6">
-    <img src="Image16.jpg" alt="gallery image 16">
-    <img src="Image10.jpg" alt="gallery image 10">
-    <img src="Image21.jpg" alt="gallery image 21">
-    <img src="Image22.jpg" alt="gallery image 22">
-    <img src="Image19.jpg" alt="gallery image 19">
-    <img src="Image6.jpg" alt="gallery image 6">
-    <img src="Image28.jpg" alt="gallery image 28">
-    <img src="Image26.jpg" alt="gallery image 26">
-  </div>
-</section>
+  <section id="resources">
+    <h2 class="section-heading">கொஞ்சம் மாவு தரியா / Resources</h2>
+    <p style="padding-left: 60px;">Content for resources section goes here...</p>
+  </section>
+
+  <section id="aesthetics">
+    <h2 class="section-heading">அழகு / Aesthetics</h2>
+    <div class="gallery-container" style="overflow-x: auto; white-space: nowrap; padding-left: 60px;">
+      <img src="Image3.jpg" alt="gallery image 3">
+      <img src="Image5.jpg" alt="gallery image 5">
+      <img src="Image6.jpg" alt="gallery image 6">
+      <img src="Image16.jpg" alt="gallery image 16">
+      <img src="Image10.jpg" alt="gallery image 10">
+      <img src="Image21.jpg" alt="gallery image 21">
+      <img src="Image22.jpg" alt="gallery image 22">
+      <img src="Image19.jpg" alt="gallery image 19">
+      <img src="Image28.jpg" alt="gallery image 28">
+      <img src="Image26.jpg" alt="gallery image 26">
+      <img src="Image29.jpg" alt="gallery image 29">
+      <img src="Image30.jpg" alt="gallery image 30">
+    </div>
+  </section>
 
   <script>
     const canvas = document.getElementById('drawCanvas');
