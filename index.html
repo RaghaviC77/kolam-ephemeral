@@ -77,10 +77,70 @@
     .red { background-color: #9b1c1c; }
     .green { background-color: #237a29; }
     .blue { background-color: #1e3a8a; }
+ .calendar-section {
+      width: 100%;
+      height: 50vh;
+      padding: 40px 5%;
+      box-sizing: border-box;
+      background-color: #dfdfdfd5;
+      border-top: 1.5px solid #1e3a8a;
+      border-bottom: 1.5px solid #1e3a8a;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .calendar-heading {
+      font-size: 1.2rem;
+      padding-left: 60px;
+      font-family: 'ShareTechMono-Regular', monospace;
+    }
+
+    .calendar-scroll {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 0 60px;
+    }
+
+    .calendar-timeline {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 80px;
+    }
+
+    .calendar-day {
+      width: 60px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-family: 'ShareTechMono-Regular', monospace;
+    }
+
+    .event {
+      position: absolute;
+      height: 30px;
+      background-color: #d1d1d1;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      white-space: nowrap;
+      font-family: 'ShareTechMono-Regular', monospace;
+    }
+
+    .today-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: #1e3a8a;
+    }
 
     .site-title {
       position: absolute;
-      top: 4%;
+      top: 4.25%;
       left: 6%;
       font-size: 1.3rem;
       color: black;
@@ -89,7 +149,7 @@
 
     .nav {
       position: absolute;
-      top: 4%;
+      top: 4.25%;
       right: 4%;
       display: flex;
       gap: 50px;
@@ -425,6 +485,27 @@
   </div>
 
   <div style="height: 100px;"></div>
+  
+/* Calendar HTML insertion goes below this comment in body */
+    <!-- Calendar Section -->
+    <section class="calendar-section">
+      <div class="calendar-heading">Upcoming Projects</div>
+      <div class="calendar-scroll">
+        <div class="calendar-timeline">
+          <!-- Sample Days -->
+          <div class="calendar-day">25 Mar</div>
+          <div class="calendar-day">26 Mar</div>
+          <div class="calendar-day">27 Mar</div>
+          <div class="calendar-day">28 Mar</div>
+          <div class="calendar-day">29 Mar</div>
+          <div class="calendar-day">30 Mar</div>
+          <!-- Today line example -->
+          <div class="today-line" style="left: 60px;"></div>
+          <!-- Sample Event -->
+          <div class="event" style="left: 120px; width: 180px;">Kolam Journal Release</div>
+        </div>
+      </div>
+    </section>
 
   <section id="threshold">
     <h2 class="section-heading">வாசல் / Threshold</h2>
