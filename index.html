@@ -178,12 +178,10 @@
       scroll-snap-align: start;
     }
 
-    .section-heading {
+        .section-heading {
       padding-left: 60px;
       margin-top: 60px;
     }
-
-
 
     @media (max-width: 768px) {
       .logo-grid {
@@ -278,7 +276,15 @@
         padding-left: 20px;
       }
     }
+    .mobile-menu-toggle {
+    display: none;
+  }
 
+  @media (max-width: 768px) {
+    .mobile-menu-toggle {
+      display: block;
+    }
+  }
   </style>
  <script>
     function toggleMobileMenu() {
@@ -288,12 +294,13 @@
   </script>
 </head>
 <body>
-  <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">⋮</button>
+ <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" style="display: none;">⋮</button>
   <nav id="mobileNav" class="mobile-nav">
-    <a href="#threshold">வாசல்/threshold</a>
-    <a href="#kolamnotebook">கோல.நோட்டு/kolamnotebook</a>
-    <a href="#resources">கொஞ்சம்.மாவு.தரியா/resources</a>
-  </nav>
+  <a href="#threshold">வாசல்/threshold</a>
+  <a href="#kolamnotebook">கோல.நோட்டு/kolamnotebook</a>
+  <a href="#resources">கொஞ்சம்.மாவு.தரியா/resources</a>
+  <input type="text" class="search-box" placeholder="ஜன்னல்/search" style="margin-top: 10px;">
+</nav>
 
   <div class="border-line border-left"></div>
   <div class="top-blue-line"></div>
