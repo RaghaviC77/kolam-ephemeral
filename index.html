@@ -182,11 +182,11 @@
       padding-left: 60px;
       margin-top: 60px;
     }
-.desktop-date {
+.desktop- {
   position: absolute;
-  top: 2.5%;
+  top: 1.5%;
   right: 160px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #333;
   z-index: 5;
   font-family: 'ShareTechMono-Regular', monospace;
@@ -302,15 +302,15 @@
     nav.classList.toggle('show');
   }
 
-  // Display today's date
+  // Display today's 
   window.addEventListener('DOMContentLoaded', () => {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const now = new Date();
+    const now = new ();
     const formatted = `${now.toISOString().split('T')[0]} (${days[now.getDay()]})`;
-    const mobileDate = document.getElementById('mobileDate');
-    const desktopDate = document.getElementById('desktopDate');
-    if (mobileDate) mobileDate.textContent = formatted;
-    if (desktopDate) desktopDate.textContent = formatted;
+    const mobile = document.getElementById('mobile');
+    const desktop = document.getElementById('desktop');
+    if (mobile) mobile.textContent = formatted;
+    if (desktop) desktop.textContent = formatted;
   });
   
 </script>
@@ -337,7 +337,7 @@
   </div>
 
   <div class="site-title">Kolam Ephemeral</div>
-  <div id="desktopDate" class="desktop-date"></div>
+  <div id="desktop" class="desktop-">:</div>
 
 
   <nav class="nav">
