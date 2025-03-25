@@ -77,7 +77,43 @@
     .red { background-color: #9b1c1c; }
     .green { background-color: #237a29; }
     .blue { background-color: #1e3a8a; }
- .calendar-section {
+
+    .section-heading {
+    padding-left: 60px;
+    margin-top: 60px;
+    }
+
+    .desktop-date {
+      position: absolute;
+      top: 5.5%;
+      left: 1%;
+      font-size: 0.85rem;
+      color: red;
+      z-index: 6;
+      font-family: 'ShareTechMono-Regular', monospace;
+    }
+
+    .top-blue-line {
+      position: absolute;
+      top: 6%;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: #1e3a8a;
+      z-index: 1;
+    }
+
+    .second-blue-line {
+      position: absolute;
+      top: 6.8%;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: #1e3a8a;
+      z-index: 1;
+    }
+
+    .calendar-section {
       width: 100%;
       height: 50vh;
       padding: 40px 5%;
@@ -499,7 +535,7 @@
       <div class="calendar-day">29 Mar</div>
       <div class="calendar-day">30 Mar</div>
 
-      <!-- Today line example -->
+      <!-- Today line -->
       <div class="today-line" style="left: 60px;"></div>
 
       <!-- Sample Event -->
@@ -507,6 +543,7 @@
     </div>
   </div>
 </section>
+
 
 
   <section id="threshold">
