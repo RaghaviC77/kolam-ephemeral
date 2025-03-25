@@ -183,13 +183,13 @@
       margin-top: 60px;
     }
     
- .desktop-date {
+  .desktop-date {
       position: absolute;
-      top: 1%;
-      right: 160px;
-      font-size: 0.9rem;
-      color: #333;
-      z-index: 5;
+      top: 5.5%;
+      left: 1%;
+      font-size: 0.85rem;
+      color: red;
+      z-index: 6;
       font-family: 'ShareTechMono-Regular', monospace;
     }
 
@@ -304,15 +304,15 @@
     nav.classList.toggle('show');
   }
 
-  // Display today's 
- window.addEventListener('DOMContentLoaded', () => {
-  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const now = new Date();
-  const formatted = `${now.toISOString().split('T')[0]} (${days[now.getDay()]})`;
-  const desktopDate = document.getElementById('desktopDate');
-  if (desktopDate) desktopDate.textContent = formatted;
-});
-
+  // Display today's date
+  window.addEventListener('DOMContentLoaded', () => {
+    const now = new Date();
+    const formatted = `${now.getDate().toString().padStart(2, '0')}/${(now.getMonth()+1).toString().padStart(2, '0')}`;
+    const mobileDate = document.getElementById('mobileDate');
+    const desktopDate = document.getElementById('desktopDate');
+    if (mobileDate) mobileDate.textContent = formatted;
+    if (desktopDate) desktopDate.textContent = formatted;
+  });
   
 </script>
 </head>
@@ -338,7 +338,7 @@
   </div>
 
   <div class="site-title">Kolam Ephemeral</div>
-<div id="desktopDate" class="desktop-date"></div>
+ <div id="desktopDate" class="desktop-date"></div>
 
 
 
