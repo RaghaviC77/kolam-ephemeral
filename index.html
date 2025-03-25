@@ -182,15 +182,17 @@
       padding-left: 60px;
       margin-top: 60px;
     }
-.desktop- {
-  position: absolute;
-  top: 1.5%;
-  right: 160px;
-  font-size: 1rem;
-  color: #333;
-  z-index: 5;
-  font-family: 'ShareTechMono-Regular', monospace;
-}
+    
+ .desktop-date {
+      position: absolute;
+      top: 2.5%;
+      right: 160px;
+      font-size: 0.9rem;
+      color: #333;
+      z-index: 5;
+      font-family: 'ShareTechMono-Regular', monospace;
+    }
+
 
     .mobile-menu-toggle,
     .mobile-nav {
@@ -303,15 +305,14 @@
   }
 
   // Display today's 
-  window.addEventListener('DOMContentLoaded', () => {
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const now = new ();
-    const formatted = `${now.toISOString().split('T')[0]} (${days[now.getDay()]})`;
-    const mobile = document.getElementById('mobile');
-    const desktop = document.getElementById('desktop');
-    if (mobile) mobile.textContent = formatted;
-    if (desktop) desktop.textContent = formatted;
-  });
+ window.addEventListener('DOMContentLoaded', () => {
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const now = new Date();
+  const formatted = `${now.toISOString().split('T')[0]} (${days[now.getDay()]})`;
+  const desktopDate = document.getElementById('desktopDate');
+  if (desktopDate) desktopDate.textContent = formatted;
+});
+
   
 </script>
 </head>
@@ -337,7 +338,8 @@
   </div>
 
   <div class="site-title">Kolam Ephemeral</div>
-  <div id="desktop" class="desktop-"></div>
+<div id="desktopDate" class="desktop-date"></div>
+
 
 
   <nav class="nav">
