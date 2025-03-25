@@ -183,74 +183,118 @@
       margin-top: 60px;
     }
 
+
+
     @media (max-width: 768px) {
-  .logo-grid {
-    top: 3%;
-    left: 1%;
-    transform: scale(.5);
-  }
+      .logo-grid {
+        position: fixed;
+        top: 2%;
+        left: 5%;
+        transform: scale(1.2);
+        z-index: 20;
+      }
 
-  .site-title {
-    top: 8%;
-    left: 8%;
-    font-size: 1.1rem;
-  }
+      .site-title {
+        position: fixed;
+        top: 2%;
+        left: 18%;
+        font-size: 1.1rem;
+        z-index: 20;
+      }
 
-  .nav {
-    flex-direction: column;
-    align: right;
-    top: 4%;
-    right: 3%;
-    gap: 10px;
-    font-size: 1rem;
-  }
+      .nav {
+        display: none;
+      }
 
-  .search-box {
-    width: 90%;
-    font-size: 0.9rem;
-  }
+      .mobile-menu-toggle {
+        display: block;
+        position: fixed;
+        top: 2%;
+        right: 5%;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        z-index: 30;
+        cursor: pointer;
+      }
 
-  .side-nav {
-    top: 48%;
-    left: 3%;
-    gap: 100px;
-    font-size: 1rem;
-  }
+      .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 50px;
+        right: 5%;
+        background: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        z-index: 25;
+        flex-direction: column;
+        gap: 12px;
+        font-size: 1rem;
+      }
 
-  .border-left {
-    left: 8%;
-  }
+      .mobile-nav a {
+        text-decoration: none;
+        color: black;
+        display: block;
+      }
 
-  .top-blue-line {
-    top: 8%;
-  }
+      .search-box {
+        width: 90%;
+        font-size: 0.9rem;
+      }
 
-  .grid-container {
-    margin-top: 200px;
-    grid-template-columns: repeat(5, 40px);
-    grid-template-rows: repeat(5, 40px);
-    align: centre; 
-    gap: 13px;
-    
-  }
+      .side-nav {
+        top: 48%;
+        left: 3%;
+        gap: 60px;
+        font-size: 1rem;
+      }
 
-  section {
-    padding: 80px 5%;
-  }
+      .border-left {
+        left: 4%;
+      }
 
-  .section-heading {
-    padding-left: 20px;
-    margin-top: 20px;
-  }
+      .top-blue-line {
+        top: 12%;
+      }
 
-  .gallery-container {
-    padding-left: 30px;
-  }
-}
+      .grid-container {
+        margin-top: 160px;
+        grid-template-columns: repeat(5, 50px);
+        grid-template-rows: repeat(5, 50px);
+        gap: 16px;
+      }
+
+      section {
+        padding: 80px 5%;
+      }
+
+      .section-heading {
+        padding-left: 20px;
+        margin-top: 40px;
+      }
+
+      .gallery-container {
+        padding-left: 20px;
+      }
+    }
 
   </style>
+ <script>
+    function toggleMobileMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
 </head>
 <body>
+  <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">⋮</button>
+  <nav id="mobileNav" class="mobile-nav">
+    <a href="#threshold">வாசல்/threshold</a>
+    <a href="#kolamnotebook">கோல.நோட்டு/kolamnotebook</a>
+    <a href="#resources">கொஞ்சம்.மாவு.தரியா/resources</a>
+  </nav>
+
   <div class="border-line border-left"></div>
   <div class="top-blue-line"></div>
 
