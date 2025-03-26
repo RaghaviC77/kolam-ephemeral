@@ -78,9 +78,9 @@
     .green { background-color: #237a29; }
     .blue { background-color: #1e3a8a; }
 
-        .section-heading {
-      padding-left: 60px;
-      margin-top: 60px;
+    .section-heading {
+    padding-left: 60px;
+    margin-top: 60px;
     }
 
     .desktop-date {
@@ -140,7 +140,7 @@
 
     .calendar-timeline {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       position: relative;
       height: 80px;
     }
@@ -154,7 +154,6 @@
 
     .event {
       position: absolute;
-      top: 20px;
       height: 30px;
       background-color: #d1d1d1;
       border-radius: 15px;
@@ -305,7 +304,90 @@
       z-index: 6;
       font-family: 'ShareTechMono-Regular', monospace;
     }
+
+ .top-blue-line {
+      position: absolute;
+      top: 6%;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: #1e3a8a;
+      z-index: 1;
+    }
+
+    .second-blue-line {
+      position: absolute;
+      top: 6.8%;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: #1e3a8a;
+      z-index: 1;
+    }
     
+    .mobile-menu-toggle,
+    .mobile-nav {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .logo-grid {
+        position: fixed;
+        top: 2%;
+        left: 5%;
+        transform: scale(1.2);
+        z-index: 20;
+      }
+
+      .site-title {
+        position: fixed;
+        top: 5.5%;
+        left: 18%;
+        font-size: 1.1rem;
+        z-index: 20;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+        position: fixed;
+        top: 2%;
+        right: 5%;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        z-index: 30;
+        cursor: pointer;
+      }
+
+      .mobile-nav {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 50px;
+        right: 5%;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        z-index: 25;
+        font-size: 1rem;
+        box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+      }
+
+      .mobile-nav.show {
+        display: flex;
+      }
+
+      .mobile-nav a {
+        text-decoration: none;
+        color: black;
+        display: block;
+      }
+
       .search-box {
         width: 90%;
         font-size: 0.9rem;
@@ -453,17 +535,14 @@
       <div class="calendar-day">29 Mar</div>
       <div class="calendar-day">30 Mar</div>
 
-      <!-- Today line example -->
-      <div class="today-line" style="left: 120px;"></div>
+      <!-- Today line -->
+      <div class="today-line" style="left: 60px;"></div>
 
       <!-- Sample Event -->
-      <div class="event" style="left: 120px; width: 180px;">
-        <a href="#resources" style="text-decoration: none; color: black;">Kolam Journal Release</a>
-      </div>
+      <div class="event" style="left: 120px; width: 180px;">Kolam Journal Release</div>
     </div>
   </div>
 </section>
-
 
 
 
