@@ -176,6 +176,23 @@
       bottom: 0;
     }
 
+    .calendar-section {
+  width: 100%;
+  padding: 50px 5%;
+  border-top: 1.5px solid #1e3a8a;
+  border-bottom: 1.5px solid #1e3a8a;
+  background-color: #dfdfdfd5;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.calendar-heading {
+  font-size: 1rem;
+  padding-left: 60px;
+  margin-bottom: 20px;
+  font-family: 'ShareTechMono-Regular', monospace;
+}
+
     .site-title {
       position: absolute;
       top: 4.25%;
@@ -524,15 +541,12 @@
 
   <div style="height: 100px;"></div>
   
-  <section class="calendar-section">
-    <div class="calendar-heading">Timeline</div>
-    <div class="calendar-scroll" id="calendarScroll">
-      <div class="calendar-timeline" id="calendarTimeline"></div>
-    </div>
-  </section>
-
-
-
+<section class="calendar-section">
+  <div class="calendar-heading">Upcoming Projects</div>
+  <div class="calendar-scroll" id="calendarScroll">
+    <div class="calendar-timeline" id="calendarTimeline"></div>
+  </div>
+</section>
 
   <section id="threshold">
     <h2 class="section-heading">வாசல் / Threshold</h2>
@@ -566,9 +580,12 @@
       <img src="Image30.jpg" alt="gallery image 30">
     </div>
   </section>
- <script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
     const timeline = document.getElementById('calendarTimeline');
     const scrollContainer = document.getElementById('calendarScroll');
+    if (!timeline || !scrollContainer) return;
+
     const daysToShow = 60;
     const today = new Date();
     const monthLangs = {
@@ -583,7 +600,7 @@
     ];
 
     function renderTimeline(lang = 'en') {
-      timeline.innerHTML = ''; // Reset
+      timeline.innerHTML = '';
       for (let i = 0; i < daysToShow; i++) {
         const day = new Date(today);
         day.setDate(day.getDate() + i);
@@ -597,7 +614,6 @@
         dayDiv.textContent = day.getDate().toString().padStart(2, '0');
         timeline.appendChild(dayDiv);
 
-        // Today line
         if (i === 0) {
           const todayLine = document.createElement('div');
           todayLine.className = 'today-marker';
@@ -605,7 +621,6 @@
           timeline.appendChild(todayLine);
         }
 
-        // Events
         eventData.forEach(event => {
           if (event.date === dateStr) {
             const eventEl = document.createElement('a');
@@ -619,15 +634,13 @@
         });
       }
 
-      // Scroll to today
-      scrollContainer.scrollLeft = 60 * 0 - 60;
+      scrollContainer.scrollLeft = 30 * 60 - (scrollContainer.offsetWidth / 2) + 30;
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      renderTimeline(currentLang);
-    });
-  </script>
-  
+    renderTimeline(currentLang);
+  });
+</script>
+
   <script>
     const canvas = document.getElementById('drawCanvas');
     const ctx = canvas.getContext('2d');
