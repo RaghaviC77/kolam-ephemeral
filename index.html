@@ -620,7 +620,10 @@
 
       const dayDiv = document.createElement('div');
       const isWeekend = day.getDay() === 0 || day.getDay() === 6;
-      const monthLabel = day.getDate() === 1 || i === 0 ? monthLangs[currentLang][day.getMonth()] : '';
+    const showMonth = i === 0 || day.getDate() === 1 || timeline.lastMonth !== day.getMonth();
+const monthLabel = showMonth ? monthLangs[currentLang][day.getMonth()] : '';
+timeline.lastMonth = day.getMonth();
+
 
       dayDiv.className = 'calendar-date';
       if (isWeekend) dayDiv.classList.add('weekend');
