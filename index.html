@@ -113,86 +113,86 @@
       z-index: 1;
     }
 
-    .calendar-scroll {
-      overflow-x: auto;
-      white-space: nowrap;
-      padding: 0 60px;
-    }
+  .calendar-section {
+    width: 100%;
+    padding: 50px 5%;
+    border-top: 1.5px solid #1e3a8a;
+    border-bottom: 1.5px solid #1e3a8a;
+    background-color: #dfdfdfd5;
+    box-sizing: border-box;
+    position: relative;
+  }
 
-    .calendar-timeline {
-      display: flex;
-      position: relative;
-      height: 120px;
-      border-bottom: 1px solid #ccc;
-      align-items: center;
-    }
+  .calendar-heading {
+    font-size: 1rem;
+    padding-left: 60px;
+    margin-bottom: 20px;
+    font-family: 'ShareTechMono-Regular', monospace;
+  }
 
-    .calendar-date {
-      width: 60px;
-      text-align: center;
-      font-size: 0.75rem;
-      font-family: 'ShareTechMono-Regular', monospace;
-      padding-top: 5px;
-      box-sizing: border-box;
-      position: relative;
-    }
+  .calendar-scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0 60px;
+  }
 
-    .calendar-date::before {
-      content: attr(data-month);
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-weight: bold;
-      font-size: 0.7rem;
-    }
+  .calendar-timeline {
+    position: relative;
+    height: 140px;
+    min-width: 5400px; /* 90 days * 60px */
+    display: flex;
+    align-items: flex-start;
+  }
 
-    .calendar-event {
-      position: absolute;
-      border-radius: 15px;
-      font-size: 0.7rem;
-      padding: 4px 12px;
-      font-family: 'ShareTechMono-Regular', monospace;
-      white-space: nowrap;
-      top: 65px;
-      text-decoration: none;
-      color: black;
-      transition: background 0.2s ease;
-    }
+  .calendar-date {
+    width: 60px;
+    text-align: center;
+    font-size: 0.75rem;
+    font-family: 'ShareTechMono-Regular', monospace;
+    padding-top: 5px;
+    box-sizing: border-box;
+    position: relative;
+    height: 60px;
+    border-right: 1px dashed #ccc;
+  }
 
-    .calendar-event:hover {
-      opacity: 0.9;
-    }
+  .calendar-date::before {
+    content: attr(data-month);
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 0.7rem;
+  }
 
-    .event-threshold { background-color: #b3d9ff; }
-    .event-notebook { background-color: #c6f1c6; }
-    .event-resources { background-color: #ffd3b6; }
+  .calendar-event {
+    position: absolute;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    font-family: 'ShareTechMono-Regular', monospace;
+    white-space: nowrap;
+    text-decoration: none;
+    color: black;
+    transition: background 0.2s ease;
+  }
 
-    .today-marker {
-      position: absolute;
-      width: 2px;
-      height: 60px;
-      background-color: #1e3a8a;
-      bottom: 0;
-    }
+  .calendar-event:hover {
+    opacity: 0.9;
+  }
 
-    .calendar-section {
-  width: 100%;
-  padding: 50px 5%;
-  border-top: 1.5px solid #1e3a8a;
-  border-bottom: 1.5px solid #1e3a8a;
-  background-color: #dfdfdfd5;
-  box-sizing: border-box;
-  position: relative;
-}
+  .event-threshold { background-color: #b3d9ff; top: 65px; }
+  .event-notebook { background-color: #c6f1c6; top: 85px; }
+  .event-resources { background-color: #ffd3b6; top: 105px; }
 
-.calendar-heading {
-  font-size: 1rem;
-  padding-left: 60px;
-  margin-bottom: 20px;
-  font-family: 'ShareTechMono-Regular', monospace;
-}
-
+  .today-marker {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: #1e3a8a;
+    top: 0;
+  }
     .site-title {
       position: absolute;
       top: 4.25%;
@@ -586,8 +586,10 @@
     const scrollContainer = document.getElementById('calendarScroll');
     if (!timeline || !scrollContainer) return;
 
-    const daysToShow = 120;
+    const daysToShow = 90;
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     const monthLangs = {
       en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     };
@@ -599,47 +601,47 @@
       { date: '2025-05-02', duration: 1, title: 'Launch', link: '#resources', type: 'resources' },
     ];
 
-    function renderTimeline(lang = 'en') {
-      timeline.innerHTML = '';
-      for (let i = 0; i < daysToShow; i++) {
-        const day = new Date(today);
-        day.setDate(day.getDate() + i);
+    for (let i = 0; i < daysToShow; i++) {
+      const day = new Date(today);
+      day.setDate(today.getDate() + i);
 
-        const dayDiv = document.createElement('div');
-        const dateStr = day.toISOString().split('T')[0];
-        const monthLabel = day.getDate() === 1 || i === 0 ? monthLangs[lang][day.getMonth()] : '';
+      const dayDiv = document.createElement('div');
+      const monthLabel = day.getDate() === 1 || i === 0 ? monthLangs[currentLang][day.getMonth()] : '';
 
-        dayDiv.className = 'calendar-date';
-        dayDiv.dataset.month = monthLabel;
-        dayDiv.textContent = day.getDate().toString().padStart(2, '0');
-        timeline.appendChild(dayDiv);
+      dayDiv.className = 'calendar-date';
+      dayDiv.dataset.month = monthLabel;
+      dayDiv.textContent = day.getDate().toString().padStart(2, '0');
+      timeline.appendChild(dayDiv);
 
-        if (i === 0) {
-          const todayLine = document.createElement('div');
-          todayLine.className = 'today-marker';
-          todayLine.style.left = `${i * 60}px`;
-          timeline.appendChild(todayLine);
-        }
-
-        eventData.forEach(event => {
-          if (event.date === dateStr) {
-            const eventEl = document.createElement('a');
-            eventEl.href = event.link;
-            eventEl.className = `calendar-event event-${event.type}`;
-            eventEl.textContent = event.title;
-            eventEl.style.left = `${i * 60}px`;
-            eventEl.style.width = `${event.duration * 60 - 10}px`;
-            timeline.appendChild(eventEl);
-          }
-        });
+      if (i === 0) {
+        const todayLine = document.createElement('div');
+        todayLine.className = 'today-marker';
+        todayLine.style.left = `${i * 60}px`;
+        timeline.appendChild(todayLine);
       }
-
-      scrollContainer.scrollLeft = 30 * 60 - (scrollContainer.offsetWidth / 2) + 30;
     }
 
-    renderTimeline(currentLang);
+    eventData.forEach(event => {
+      const eventDate = new Date(event.date);
+      eventDate.setHours(0, 0, 0, 0);
+      const diffTime = eventDate.getTime() - today.getTime();
+      const dayOffset = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+      if (dayOffset >= 0 && dayOffset < daysToShow) {
+        const eventEl = document.createElement('a');
+        eventEl.href = event.link;
+        eventEl.className = `calendar-event event-${event.type}`;
+        eventEl.textContent = event.title;
+        eventEl.style.left = `${dayOffset * 60}px`;
+        eventEl.style.width = `${event.duration * 60 - 10}px`;
+        timeline.appendChild(eventEl);
+      }
+    });
+
+    scrollContainer.scrollLeft = 30 * 60 - (scrollContainer.offsetWidth / 2) + 30;
   });
 </script>
+
 
   <script>
     const canvas = document.getElementById('drawCanvas');
