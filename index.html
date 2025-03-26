@@ -613,6 +613,7 @@
       { date: '2025-06-10', duration: 2, title: 'Aasai', link: '#kolamnotebook', type: 'notebook' },
       { date: '2025-05-02', duration: 1, title: 'Launch', link: '#resources', type: 'resources' },
     ];
+let prevMonth = -1;
 
     for (let i = 0; i < daysToShow; i++) {
       const day = new Date(today);
@@ -621,7 +622,10 @@
       const dayDiv = document.createElement('div');
       const isWeekend = day.getDay() === 0 || day.getDay() === 6;
     const showMonth = i === 0 || day.getDate() === 1 || timeline.lastMonth !== day.getMonth();
+const showMonth = i === 0 || day.getDate() === 1 || prevMonth !== day.getMonth();
 const monthLabel = showMonth ? monthLangs[currentLang][day.getMonth()] : '';
+prevMonth = day.getMonth();
+
 timeline.lastMonth = day.getMonth();
 
 
