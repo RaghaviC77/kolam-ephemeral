@@ -103,12 +103,12 @@
       z-index: 1;
     }
 
-    
   .calendar-section {
     width: 100%;
     padding: 50px 5%;
     border-top: 1.5px solid #1e3a8a;
     border-bottom: 1.5px solid #1e3a8a;
+    background-color: white;
     box-sizing: border-box;
     position: relative;
   }
@@ -146,6 +146,10 @@
     border-right: 1px dashed #ccc;
   }
 
+  .calendar-date.weekend {
+    color: red;
+  }
+
   .calendar-date::before {
     content: attr(data-month);
     position: absolute;
@@ -154,6 +158,7 @@
     transform: translateX(-50%);
     font-weight: bold;
     font-size: 0.7rem;
+    color: black;
   }
 
   .calendar-event {
@@ -173,8 +178,8 @@
   }
 
   .event-threshold { background-color: #b3d9ff; top: 65px; }
-  .event-notebook { background-color: #c6f1c6; top: 85px; }
-  .event-resources { background-color: #ffd3b6; top: 105px; }
+  .event-notebook { background-color: #9b1c1c; top: 85px; } /* matching dot red */
+  .event-resources { background-color: #237a29; top: 105px; } /* matching dot green */
 
   .today-marker {
     position: absolute;
@@ -183,6 +188,7 @@
     background-color: #1e3a8a;
     top: 0;
   }
+    
     .site-title {
       position: absolute;
       top: 4.25%;
@@ -576,7 +582,7 @@
     const scrollContainer = document.getElementById('calendarScroll');
     if (!timeline || !scrollContainer) return;
 
-    const daysToShow = 90;
+    const daysToShow = 120;
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -596,9 +602,11 @@
       day.setDate(today.getDate() + i);
 
       const dayDiv = document.createElement('div');
+      const isWeekend = day.getDay() === 0 || day.getDay() === 6;
       const monthLabel = day.getDate() === 1 || i === 0 ? monthLangs[currentLang][day.getMonth()] : '';
 
       dayDiv.className = 'calendar-date';
+      if (isWeekend) dayDiv.classList.add('weekend');
       dayDiv.dataset.month = monthLabel;
       dayDiv.textContent = day.getDate().toString().padStart(2, '0');
       timeline.appendChild(dayDiv);
