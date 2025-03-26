@@ -113,25 +113,6 @@
       z-index: 1;
     }
 
-    .calendar-section {
-      width: 100%;
-      height: 50vh;
-      padding: 40px 5%;
-      box-sizing: border-box;
-      background-color: #dfdfdfd5;
-      border-top: 1.5px solid #1e3a8a;
-      border-bottom: 1.5px solid #1e3a8a;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .calendar-heading {
-      font-size: 1.2rem;
-      padding-left: 60px;
-      font-family: 'ShareTechMono-Regular', monospace;
-    }
-
     .calendar-scroll {
       overflow-x: auto;
       white-space: nowrap;
@@ -140,38 +121,59 @@
 
     .calendar-timeline {
       display: flex;
-      align-items: center;
       position: relative;
-      height: 80px;
+      height: 120px;
+      border-bottom: 1px solid #ccc;
+      align-items: center;
     }
 
-    .calendar-day {
+    .calendar-date {
       width: 60px;
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-family: 'ShareTechMono-Regular', monospace;
+      padding-top: 5px;
+      box-sizing: border-box;
+      position: relative;
     }
 
-    .event {
+    .calendar-date::before {
+      content: attr(data-month);
       position: absolute;
-      height: 30px;
-      background-color: #d1d1d1;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+      font-size: 0.7rem;
+    }
+
+    .calendar-event {
+      position: absolute;
       border-radius: 15px;
-      font-size: 0.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 12px;
-      white-space: nowrap;
+      font-size: 0.7rem;
+      padding: 4px 12px;
       font-family: 'ShareTechMono-Regular', monospace;
+      white-space: nowrap;
+      top: 65px;
+      text-decoration: none;
+      color: black;
+      transition: background 0.2s ease;
     }
 
-    .today-line {
+    .calendar-event:hover {
+      opacity: 0.9;
+    }
+
+    .event-threshold { background-color: #b3d9ff; }
+    .event-notebook { background-color: #c6f1c6; }
+    .event-resources { background-color: #ffd3b6; }
+
+    .today-marker {
       position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 1px;
+      width: 2px;
+      height: 60px;
       background-color: #1e3a8a;
+      bottom: 0;
     }
 
     .site-title {
@@ -522,27 +524,13 @@
 
   <div style="height: 100px;"></div>
   
-<!-- Calendar Section -->
-<section class="calendar-section">
-  <div class="calendar-heading">Upcoming Projects</div>
-  <div class="calendar-scroll">
-    <div class="calendar-timeline">
-      <!-- Sample Days -->
-      <div class="calendar-day">25 Mar</div>
-      <div class="calendar-day">26 Mar</div>
-      <div class="calendar-day">27 Mar</div>
-      <div class="calendar-day">28 Mar</div>
-      <div class="calendar-day">29 Mar</div>
-      <div class="calendar-day">30 Mar</div>
-
-      <!-- Today line -->
-      <div class="today-line" style="left: 60px;"></div>
-
-      <!-- Sample Event -->
-      <div class="event" style="left: 120px; width: 180px;">Kolam Journal Release</div>
+  <section class="calendar-section">
+    <div class="calendar-heading">Upcoming Projects</div>
+    <div class="calendar-scroll" id="calendarScroll">
+      <div class="calendar-timeline" id="calendarTimeline"></div>
     </div>
-  </div>
-</section>
+  </section>
+
 
 
 
@@ -562,7 +550,7 @@
   </section>
 
   <section id="aesthetics">
-    <h2 class="section-heading">அழகு / Aesthetics</h2>
+    <h2 class="section-heading"></h2>
     <div class="gallery-container" style="overflow-x: auto; white-space: nowrap; padding-left: 60px;">
       <img src="Image3.jpg" alt="gallery image 3">
       <img src="Image5.jpg" alt="gallery image 5">
@@ -578,7 +566,68 @@
       <img src="Image30.jpg" alt="gallery image 30">
     </div>
   </section>
+ <script>
+    const timeline = document.getElementById('calendarTimeline');
+    const scrollContainer = document.getElementById('calendarScroll');
+    const daysToShow = 60;
+    const today = new Date();
+    const monthLangs = {
+      en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    };
+    const currentLang = 'en';
 
+    const eventData = [
+      { date: '2025-04-14', duration: 3, title: 'Mallipoo Machines', link: '#kolamnotebook', type: 'notebook' },
+      { date: '2025-06-10', duration: 2, title: 'Aasai', link: '#kolamnotebook', type: 'notebook' },
+      { date: '2025-05-02', duration: 1, title: 'Launch', link: '#resources', type: 'resources' },
+    ];
+
+    function renderTimeline(lang = 'en') {
+      timeline.innerHTML = ''; // Reset
+      for (let i = 0; i < daysToShow; i++) {
+        const day = new Date(today);
+        day.setDate(day.getDate() + i);
+
+        const dayDiv = document.createElement('div');
+        const dateStr = day.toISOString().split('T')[0];
+        const monthLabel = day.getDate() === 1 || i === 0 ? monthLangs[lang][day.getMonth()] : '';
+
+        dayDiv.className = 'calendar-date';
+        dayDiv.dataset.month = monthLabel;
+        dayDiv.textContent = day.getDate().toString().padStart(2, '0');
+        timeline.appendChild(dayDiv);
+
+        // Today line
+        if (i === 0) {
+          const todayLine = document.createElement('div');
+          todayLine.className = 'today-marker';
+          todayLine.style.left = `${i * 60}px`;
+          timeline.appendChild(todayLine);
+        }
+
+        // Events
+        eventData.forEach(event => {
+          if (event.date === dateStr) {
+            const eventEl = document.createElement('a');
+            eventEl.href = event.link;
+            eventEl.className = `calendar-event event-${event.type}`;
+            eventEl.textContent = event.title;
+            eventEl.style.left = `${i * 60}px`;
+            eventEl.style.width = `${event.duration * 60 - 10}px`;
+            timeline.appendChild(eventEl);
+          }
+        });
+      }
+
+      // Scroll to today
+      scrollContainer.scrollLeft = 60 * 0 - 60;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderTimeline(currentLang);
+    });
+  </script>
+  
   <script>
     const canvas = document.getElementById('drawCanvas');
     const ctx = canvas.getContext('2d');
