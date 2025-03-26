@@ -154,16 +154,22 @@
     color: red;
   }
 
-  .calendar-date::before {
-    content: attr(data-month);
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: bold;
-    font-size: 0.7rem;
-    color: black;
-  }
+.calendar-date::before {
+  content: attr(data-month);
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  font-size: 0.75rem;
+  color: #1e3a8a; /* Match your blue line */
+  letter-spacing: 0.5px;
+  background: #dfdfdfd5;
+padding: 0 4px;
+border-radius: 4px;
+
+}
+
 
   .calendar-event {
     position: absolute;
