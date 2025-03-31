@@ -727,23 +727,51 @@ const glossaryTerms = [
   "Consent: Oppudhal—asking, listening, honoring no."
 ];
 
+let activePopup = null;
+
 const gridDots = document.querySelectorAll('.grid-container .dot');
 
 gridDots.forEach((dot, index) => {
   dot.addEventListener('click', (e) => {
     if (document.body.classList.contains('drawing-enabled')) return;
 
-    document.querySelectorAll('.dot-popup').forEach(p => p.remove());
+    // Remove previous popup
+    if (activePopup) {
+      activePopup.remove();
+      activePopup = null;
+    }
 
+    const rect = dot.getBoundingClientRect();
     const popup = document.createElement('div');
     popup.className = 'dot-popup';
     popup.textContent = glossaryTerms[index % glossaryTerms.length];
-    popup.style.left = `${e.clientX + 10}px`;
-    popup.style.top = `${e.clientY + 10}px`;
-    document.body.appendChild(popup);
 
-    setTimeout(() => popup.remove(), 8000);
+    // Choose left or right based on position
+    const pageCenter = window.innerWidth / 2;
+    const offset = 10;
+    const isLeftSide = rect.left < pageCenter;
+
+    if (isLeftSide) {
+      popup.style.left = `${rect.right + offset}px`;
+    } else {
+      popup.style.left = `${rect.left - 300 - offset}px`; // assume 300px max width
+    }
+    popup.style.top = `${rect.top + window.scrollY}px`;
+
+    document.body.appendChild(popup);
+    activePopup = popup;
+
+    e.stopPropagation(); // Prevent the click from bubbling to body
   });
+});
+
+// Click anywhere else to close popup
+document.body.addEventListener('click', () => {
+  if (activePopup) {
+    activePopup.remove();
+    activePopup = null;
+  }
+});
 });
 </script>
 
