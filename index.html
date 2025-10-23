@@ -774,13 +774,17 @@ document.body.addEventListener('click', () => {
 });
 });
 </script>
- <div class="draw-tools" style="margin-top: 10px;">
+ <!-- Draw Buttons -->
+<div class="draw-tools" style="margin-top: 10px; z-index: 10; position: relative;">
   <button onclick="enableDrawing(true)">Draw</button>
   <button onclick="enableDrawing(false)">Erase</button>
 </div>
 
- <canvas id="drawCanvas"></canvas>
- <script>
+<!-- Canvas -->
+<canvas id="drawCanvas"></canvas>
+
+<!-- Draw Script -->
+<script>
   const canvas = document.getElementById('drawCanvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
@@ -790,21 +794,23 @@ document.body.addEventListener('click', () => {
   ctx.lineCap = 'round';
 
   let isDrawing = false;
+  let drawingEnabled = false;
 
-  function enableDrawing(enabled) {
-    document.body.classList.toggle('drawing-enabled', enabled);
-    if (!enabled) ctx.clearRect(0, 0, canvas.width, canvas.height);
+  function enableDrawing(state) {
+    drawingEnabled = state;
+    document.body.classList.toggle('drawing-enabled', state);
+    if (!state) ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
   canvas.addEventListener('mousedown', e => {
-    if (!document.body.classList.contains('drawing-enabled')) return;
+    if (!drawingEnabled) return;
     isDrawing = true;
     ctx.beginPath();
     ctx.moveTo(e.clientX, e.clientY);
   });
 
   canvas.addEventListener('mousemove', e => {
-    if (!isDrawing || !document.body.classList.contains('drawing-enabled')) return;
+    if (!isDrawing || !drawingEnabled) return;
     ctx.lineTo(e.clientX, e.clientY);
     ctx.stroke();
   });
