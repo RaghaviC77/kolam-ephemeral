@@ -774,7 +774,43 @@ document.body.addEventListener('click', () => {
 });
 });
 </script>
+<canvas id="drawCanvas"></canvas>
+<div class="draw-tools">
+  <button onclick="enableDrawing(true)">Draw</button>
+  <button onclick="enableDrawing(false)">Erase</button>
+</div>
+<script>
+  const canvas = document.getElementById('drawCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = '#000000';
+  ctx.lineCap = 'round';
 
+  let isDrawing = false;
+
+  function enableDrawing(enabled) {
+    document.body.classList.toggle('drawing-enabled', enabled);
+    if (!enabled) ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  canvas.addEventListener('mousedown', e => {
+    if (!document.body.classList.contains('drawing-enabled')) return;
+    isDrawing = true;
+    ctx.beginPath();
+    ctx.moveTo(e.clientX, e.clientY);
+  });
+
+  canvas.addEventListener('mousemove', e => {
+    if (!isDrawing || !document.body.classList.contains('drawing-enabled')) return;
+    ctx.lineTo(e.clientX, e.clientY);
+    ctx.stroke();
+  });
+
+  canvas.addEventListener('mouseup', () => isDrawing = false);
+  canvas.addEventListener('mouseleave', () => isDrawing = false);
+</script>
   
 </body>
 </html>
