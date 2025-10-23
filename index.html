@@ -774,17 +774,18 @@ document.body.addEventListener('click', () => {
 });
 });
 </script>
-<canvas id="drawCanvas"></canvas>
-<div class="draw-tools">
+ <div class="draw-tools" style="margin-top: 10px;">
   <button onclick="enableDrawing(true)">Draw</button>
   <button onclick="enableDrawing(false)">Erase</button>
 </div>
-<script>
+
+ <canvas id="drawCanvas"></canvas>
+ <script>
   const canvas = document.getElementById('drawCanvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 3;
   ctx.strokeStyle = '#000000';
   ctx.lineCap = 'round';
 
@@ -811,6 +812,5 @@ document.body.addEventListener('click', () => {
   canvas.addEventListener('mouseup', () => isDrawing = false);
   canvas.addEventListener('mouseleave', () => isDrawing = false);
 </script>
-  
 </body>
 </html>
