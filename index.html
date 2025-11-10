@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ta">
 <head>
   <meta charset="UTF-8" />
@@ -16,8 +16,7 @@
       scroll-behavior: smooth;
     }
 
-    <body>
-   {
+    body {
       margin: 0;
       background-color: #dfdfdfd5;
       font-family: 'ShareTechMono-Regular', sans-serif;
@@ -27,6 +26,7 @@
       position: relative;
     }
 
+    /* Lines */
     .top-blue-line {
       position: absolute;
       top: 6%;
@@ -37,41 +37,33 @@
       z-index: 1;
     }
 
-    
-    .second-blue-line {
+    .border-left {
       position: absolute;
-      top: 8%;
-      left: 0;
-      width: 100%;
-      height: 1.5px;
-      background-color: #1e3a8a;
-  
+      left: 5%;
+      top: 0;
+      height: 100%;
+      width: 1.5px;
+      background-color: red;
+      z-index: 0;
     }
 
-
-    section {
-      width: 100%;
-      padding: 100px 5%;
-      border-top: 1.5px solid #1e3a8a;
-      box-sizing: border-box;
-      position: relative;
-    }
-
+    /* Logo Grid */
     .logo-grid {
       position: absolute;
       top: 1.5%;
       left: 1%;
       display: grid;
-      grid-template-columns: repeat(5, 5px);
-      grid-template-rows: repeat(5, 5px);
-      gap: 4px;
+      grid-template-columns: repeat(5, 10px);
+      grid-template-rows: repeat(5, 10px);
+      gap: 10px;
       z-index: 3;
     }
 
     .logo-dot {
-      width: 4px;
-      height: 4px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
+      cursor: pointer;
     }
 
     .black { background-color: black; }
@@ -79,127 +71,23 @@
     .green { background-color: #237a29; }
     .blue { background-color: #1e3a8a; }
 
-    .section-heading {
-    padding-left: 60px;
-    margin-top: 60px;
-    }
-
-    .desktop-date {
+    /* Tooltip for glossary */
+    .dot-popup {
       position: absolute;
-      top: 5.5%;
-      left: 1%;
+      background-color: white;
+      border: 1px solid #1e3a8a;
+      border-radius: 12px;
+      padding: 12px;
       font-size: 0.85rem;
-      color: red;
-      z-index: 6;
+      max-width: 300px;
       font-family: 'ShareTechMono-Regular', monospace;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      display: none;
+      line-height: 1.4;
     }
 
-    .top-blue-line {
-      position: absolute;
-      top: 6%;
-      left: 0;
-      width: 100%;
-      height: 1.5px;
-      background-color: #1e3a8a;
-      z-index: 1;
-    }
-
-  .calendar-section {
-    width: 100%;
-    padding: 50px 5%;
-    border-top: 1.5px solid #1e3a8a;
-    border-bottom: 1.5px solid #1e3a8a;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  .calendar-heading {
-    font-size: 1rem;
-    padding-left: 60px;
-    margin-bottom: 20px;
-    font-family: 'ShareTechMono-Regular', monospace;
-  }
-
-  .calendar-scroll {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 0 60px;
-  scrollbar-width: none; /* Firefox */
-    }
-
-    .calendar-scroll::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera */
-    }
-
-.calendar-timeline {
-  position: relative;
-  height: 120px; /* cleaner height */
-  min-width: 5400px;
-  display: flex;
-  align-items: flex-start; /* align dates to the top */
-  padding-top: 30px; /* spacing to show month names without pushing everything down */
-}
-
-
-
-  .calendar-date {
-    width: 60px;
-    text-align: center;
-    font-size: 0.75rem;
-    font-family: 'ShareTechMono-Regular', monospace;
-    padding-top: 5px;
-    box-sizing: border-box;
-    position: relative;
-    height: 60px;
-    border-right: 1px dashed #ccc;
-  }
-
-  .calendar-date.weekend {
-    color: red;
-  }
-
-.calendar-date::before {
-  content: attr(data-month);
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: bold;
-  font-size: 0.75rem;
-  color: black;
-}
-
-
-
-
-  .calendar-event {
-    position: absolute;
-    border-radius: 15px;
-    font-size: 0.7rem;
-    padding: 4px 12px;
-    font-family: 'ShareTechMono-Regular', monospace;
-    white-space: nowrap;
-    text-decoration: none;
-    color: black;
-    transition: background 0.2s ease;
-  }
-
-  .calendar-event:hover {
-    opacity: 0.9;
-  }
-
-  .event-threshold { background-color: #9fc5e8; top: 65px; }
-  .event-notebook { background-color: #ea9999; top: 85px; } /* matching dot red */
-  .event-resources { background-color: #b6d7a8; top: 105px; } /* matching dot green */
-
-  .today-marker {
-    position: absolute;
-    width: 2px;
-    height: 100%;
-    background-color: #1e3a8a;
-    top: 0;
-  }
-    
+    /* Navigation and layout */
     .site-title {
       position: absolute;
       top: 4.25%;
@@ -217,28 +105,15 @@
       gap: 50px;
       font-size: 1.2rem;
       z-index: 4;
-      align-items: right;
-      align-items: flex-end;
     }
 
     .nav a {
       text-decoration: none;
       color: black;
-      align-self: flex-end;
-    }
-  .search-box {
-      border-radius: 12px;
-      padding: 0 10px 2px 10px;
-      height: 1.6rem;
-      display: flex;
-      align-items: flex-end;
-      border: 1px solid #ccc;
-      font-family: 'ShareTechMono-Regular', monospace;
-      font-size: 1rem;
     }
 
     .side-nav {
-      position: absolute;;
+      position: absolute;
       left: 2.5%;
       top: 15%;
       display: flex;
@@ -256,38 +131,6 @@
       color: black;
     }
 
-    .border-line {
-      position: absolute;
-      z-index: 0;
-    }
-
-    .border-left {
-      left: 5%;
-      top: 0;
-      height: 100%;
-      width: 1.5px;
-      background-color: red;
-    }
-
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(5, 60px);
-      grid-template-rows: repeat(5, 60px);
-      gap: 20px;
-      margin-top: 250px;
-      justify-content: center;
-      align-items: center;
-      place-items: center;
-      z-index: 1;
-    }
-
-    .dot {
-      border-radius: 50%;
-    }
-
-    .dot-sm { width: 10px; height: 10px; }
-    .dot-xl { width: 20px; height: 20px; }
-
     canvas {
       position: absolute;
       top: 0;
@@ -300,224 +143,135 @@
       pointer-events: auto;
     }
 
-    .gallery-container {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 40px 0;
+    /* Calendar + Sections */
+    .calendar-section {
+      width: 100%;
+      padding: 50px 5%;
+      border-top: 1.5px solid #1e3a8a;
+      border-bottom: 1.5px solid #1e3a8a;
+      box-sizing: border-box;
+      position: relative;
+      margin-top: 300px;
     }
 
-    .gallery-container img {
-      width: 280px;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 8px;
-      scroll-snap-align: start;
-    }
-
-           .section-heading {
-      padding-left: 60px;
-      margin-top: 60px;
-    }
-    
-    .dot-popup {
-  position: absolute;
-  background-color: white;
-  border: 1px solid #1e3a8a;
-  border-radius: 12px;
-  padding: 12px;
-  font-size: 0.85rem;
-  max-width: 300px;
-  font-family: 'ShareTechMono-Regular', monospace;
-  z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-  .desktop-date {
-      position: absolute;
-      top: 4.5%;
-      left: 1%;
+    .calendar-heading {
       font-size: 1rem;
-      color: red;
-      z-index: 6;
+      padding-left: 60px;
+      margin-bottom: 20px;
       font-family: 'ShareTechMono-Regular', monospace;
     }
 
- .top-blue-line {
+    .calendar-scroll {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 0 60px;
+    }
+
+    .calendar-timeline {
+      position: relative;
+      height: 120px;
+      min-width: 5400px;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 30px;
+    }
+
+    .calendar-date {
+      width: 60px;
+      text-align: center;
+      font-size: 0.75rem;
+      font-family: 'ShareTechMono-Regular', monospace;
+      padding-top: 5px;
+      height: 60px;
+      border-right: 1px dashed #ccc;
+    }
+
+    .calendar-date.weekend {
+      color: red;
+    }
+
+    .calendar-date::before {
+      content: attr(data-month);
       position: absolute;
-      top: 6%;
-      left: 0;
-      width: 100%;
-      height: 1.5px;
-      background-color: #1e3a8a;
-      z-index: 1;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+      font-size: 0.75rem;
     }
 
-    .second-blue-line {
+    .calendar-event {
       position: absolute;
-      top: 6.8%;
-      left: 0;
-      width: 100%;
-      height: 1.5px;
+      border-radius: 15px;
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      white-space: nowrap;
+      color: black;
+    }
+
+    .event-notebook { background-color: #ea9999; top: 85px; }
+    .event-resources { background-color: #b6d7a8; top: 105px; }
+
+    .today-marker {
+      position: absolute;
+      width: 2px;
+      height: 100%;
       background-color: #1e3a8a;
-      z-index: 1;
-    }
-    
-    .mobile-menu-toggle,
-    .mobile-nav {
-      display: none;
+      top: 0;
     }
 
-    @media (max-width: 768px) {
-      .logo-grid {
-        position: fixed;
-        top: 2%;
-        left: 5%;
-        transform: scale(1.2);
-        z-index: 20;
-      }
-
-      .site-title {
-        position: fixed;
-        top: 5.5%;
-        left: 18%;
-        font-size: 1.1rem;
-        z-index: 20;
-      }
-
-      .nav {
-        display: none;
-      }
-
-      .mobile-menu-toggle {
-        display: block;
-        position: fixed;
-        top: 2%;
-        right: 5%;
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        z-index: 30;
-        cursor: pointer;
-      }
-
-      .mobile-nav {
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 50px;
-        right: 5%;
-        background: white;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 10px;
-        z-index: 25;
-        font-size: 1rem;
-        box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
-      }
-
-      .mobile-nav.show {
-        display: flex;
-      }
-
-      .mobile-nav a {
-        text-decoration: none;
-        color: black;
-        display: block;
-      }
-
-      .search-box {
-        width: 90%;
-        font-size: 0.9rem;
-      }
-
-      .side-nav {
-        top: 48%;
-        left: 3%;
-        gap: 60px;
-        font-size: 1rem;
-      }
-
-      .border-left {
-        left: 4%;
-      }
-
-      .top-blue-line {
-        top: 18%;
-      }
-
-      .grid-container {
-        margin-top: 160px;
-        grid-template-columns: repeat(5, 50px);
-        grid-template-rows: repeat(5, 50px);
-        gap: 16px;
-      }
-
-      section {
-        padding: 80px 5%;
-      }
-
-      .section-heading {
-        padding-left: 20px;
-        margin-top: 40px;
-      }
-
-      .gallery-container {
-        padding-left: 20px;
-      }
+    section {
+      width: 100%;
+      padding: 100px 5%;
+      border-top: 1.5px solid #1e3a8a;
+      box-sizing: border-box;
+      position: relative;
     }
-</style>
-<script>
-  function toggleMobileMenu() {
-    const nav = document.getElementById('mobileNav');
-    nav.classList.toggle('show');
-  }
 
-  // Display today's date
-  window.addEventListener('DOMContentLoaded', () => {
-    const now = new Date();
-    const formatted = `${now.getDate().toString().padStart(2, '0')}/${(now.getMonth()+1).toString().padStart(2, '0')}`;
-    const mobileDate = document.getElementById('mobileDate');
-    const desktopDate = document.getElementById('desktopDate');
-    if (mobileDate) mobileDate.textContent = formatted;
-    if (desktopDate) desktopDate.textContent = formatted;
-  });
-  
-</script>
+    .section-heading {
+      padding-left: 60px;
+      margin-top: 60px;
+    }
+  </style>
 </head>
+
 <body>
-  <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">⋮</button>
-  <nav id="mobileNav" class="mobile-nav">
-    <a href="#threshold">வாசல்/threshold</a>
-    <a href="#kolamnotebook">கோல.நோட்டு/kolamnotebook</a>
-    <a href="#resources">கொஞ்சம்.மாவு.தரியா/resources</a>
-    <input type="text" class="search-box" placeholder="ஜன்னல்/search" style="margin-top: 10px;">
-  </nav>
-
-
-  <div class="border-line border-left"></div>
+  <div class="border-left"></div>
   <div class="top-blue-line"></div>
 
   <div class="logo-grid">
-    <div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
-    <div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot blue"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
-    <div class="logo-dot black"></div><div class="logo-dot red"></div><div class="logo-dot black"></div><div class="logo-dot blue"></div><div class="logo-dot black"></div>
-    <div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot green"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
-    <div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div><div class="logo-dot black"></div>
+    <div class="logo-dot black" data-glossary="Kolam: A Tamil threshold drawing made with rice flour. This site uses Kolam as a critical tool that acknowledges caste-based, gendered, and grammatical labour."></div>
+    <div class="logo-dot black" data-glossary="Decolonial: Challenges colonial systems of value and knowledge. Centres Indigenous and oppressed-caste voices through relational, situated practices."></div>
+    <div class="logo-dot black" data-glossary="Transnational: Describes people, practices, and networks that span across nation-states. Reflects diasporic movement and interconnected belonging."></div>
+    <div class="logo-dot black" data-glossary="Intersectional: A lens to understand how caste, gender, class, and ability combine to produce both privilege and oppression."></div>
+    <div class="logo-dot black" data-glossary="Embodied Knowledge: Knowledge carried in the body — like Kolam-making, cooking, and flower-weaving."></div>
+
+    <div class="logo-dot black" data-glossary="Ephemerality: In Kolam.ephemeral, ephemerality means shifting forms — from zines to exhibitions to digital spaces."></div>
+    <div class="logo-dot black" data-glossary="Care as Structure: Care isn’t a vibe — it’s a system of fair pay, slow time, mutual support, and sustainability across roles."></div>
+    <div class="logo-dot blue" data-glossary="Caste-Conscious: Caste is a structural hierarchy. Kolam.ephemeral is explicitly caste-aware — not neutral."></div>
+    <div class="logo-dot black" data-glossary="Threshold: A space of entry — into homes, countries, institutions. It’s where equity must be constantly reworked."></div>
+    <div class="logo-dot black" data-glossary="EDI: Equity, Diversity, Inclusion — practiced here through caste-conscious curation, language access, and redistribution."></div>
+
+    <div class="logo-dot black" data-glossary="Kolam Exhibition: Held at Primary, Nottingham (Nov 2024–Feb 2025), supported by Art Fund. It centred Tamil, Dalit, and caste-oppressed artists."></div>
+    <div class="logo-dot red" data-glossary="Dalit: A term of resistance by oppressed-caste people. Dalit work challenges dominant structures and asserts dignity."></div>
+    <div class="logo-dot black" data-glossary="Diaspora: A scattering of people across geographies. Diaspora holds both longing and layered belonging."></div>
+    <div class="logo-dot blue" data-glossary="Counter-archive: A memory space built by community, not institutions. It preserves what is silenced or erased."></div>
+    <div class="logo-dot black" data-glossary="Iterative Practice: A process of repetition and revision — valuing evolution, not finality."></div>
+
+    <div class="logo-dot black" data-glossary="Zine: A self-published, low-cost publication — informal, experimental, and collective."></div>
+    <div class="logo-dot black" data-glossary="Aesthetic Capital: The value of appearing a certain way. It can reproduce exclusion or be critically reclaimed."></div>
+    <div class="logo-dot green" data-glossary="Social Capital: The privilege of being networked or familiar. Redistribution is key to inclusion."></div>
+    <div class="logo-dot black" data-glossary="Resource Sharing: Giving time, tools, and access based on need — not charity, but responsibility."></div>
+    <div class="logo-dot black" data-glossary="Co-creation: Making together with shared authorship. It resists extraction and celebrates collaboration."></div>
+
+    <div class="logo-dot black" data-glossary="Non-extractive Collaboration: Working without taking — based on consent, credit, and continuity."></div>
+    <div class="logo-dot black" data-glossary="Collective Well-being: A commitment to sustaining care, energy, and health across a network — not just individuals."></div>
+    <div class="logo-dot black" data-glossary="Relational Practice: Building through long-term trust and shared time — not just outcomes."></div>
+    <div class="logo-dot black" data-glossary="Sisterhood: A solidarity between women, queer, and caste-oppressed creatives — rooted in difference, care, and survival."></div>
+    <div class="logo-dot black" data-glossary="Kolam as Method: Kolam is repeated, erased, and redrawn. It’s a curatorial form for care, iteration, and making together."></div>
   </div>
 
   <div class="site-title">Kolam Ephemeral</div>
- <div id="desktopDate" class="desktop-date"></div>
-
-
-
-  <nav class="nav">
-    <a href="#threshold">வாசல்/threshold</a>
-    <a href="#kolamnotebook">கோல.நோட்டு/kolamnotebook</a>
-    <a href="#resources">கொஞ்சம்.மாவு.தரியா/resources</a>
-    <input type="text" class="search-box" placeholder="ஜன்னல்/search">
-  </nav>
 
   <div class="side-nav">
     <a href="#" onclick="enableDrawing(true)">வரை/draw</a>
@@ -526,161 +280,57 @@
 
   <canvas id="drawCanvas"></canvas>
 
-  <!-- Dot Grid -->
-<div class="logo-grid">
-  <div class="logo-dot black" data-glossary="Kolam: A Tamil threshold drawing made with rice flour. This site uses Kolam as a critical tool that acknowledges caste-based, gendered, and grammatical labour."></div>
-  <div class="logo-dot black" data-glossary="Decolonial: Challenges colonial systems of value and knowledge. Centres Indigenous and oppressed-caste voices through relational, situated practices."></div>
-  <div class="logo-dot black" data-glossary="Transnational: Describes people, practices, and networks that span across nation-states. Reflects diasporic movement and interconnected belonging."></div>
-  <div class="logo-dot black" data-glossary="Intersectional: A lens to understand how caste, gender, class, and ability combine to produce both privilege and oppression."></div>
-  <div class="logo-dot black" data-glossary="Embodied Knowledge: Knowledge carried in the body — like Kolam-making, cooking, and flower-weaving."></div>
-
-  <div class="logo-dot black" data-glossary="Ephemerality: In Kolam.ephemeral, ephemerality means shifting forms — from zines to exhibitions to digital spaces."></div>
-  <div class="logo-dot black" data-glossary="Care as Structure: Care isn’t a vibe — it’s a system of fair pay, slow time, mutual support, and sustainability across roles."></div>
-  <div class="logo-dot blue" data-glossary="Caste-Conscious: Caste is a structural hierarchy. Kolam.ephemeral is explicitly caste-aware — not neutral."></div>
-  <div class="logo-dot black" data-glossary="Threshold: A space of entry — into homes, countries, institutions. It’s where equity must be constantly reworked."></div>
-  <div class="logo-dot black" data-glossary="EDI: Equity, Diversity, Inclusion — practiced here through caste-conscious curation, language access, and redistribution."></div>
-
-  <div class="logo-dot black" data-glossary="Kolam Exhibition: Held at Primary, Nottingham (Nov 2024–Feb 2025), supported by Art Fund. It centred Tamil, Dalit, and caste-oppressed artists."></div>
-  <div class="logo-dot red" data-glossary="Dalit: A term of resistance by oppressed-caste people. Dalit work challenges dominant structures and asserts dignity."></div>
-  <div class="logo-dot black" data-glossary="Diaspora: A scattering of people across geographies. Diaspora holds both longing and layered belonging."></div>
-  <div class="logo-dot blue" data-glossary="Counter-archive: A memory space built by community, not institutions. It preserves what is silenced or erased."></div>
-  <div class="logo-dot black" data-glossary="Iterative Practice: A process of repetition and revision — valuing evolution, not finality."></div>
-
-  <div class="logo-dot black" data-glossary="Zine: A self-published, low-cost publication — informal, experimental, and collective."></div>
-  <div class="logo-dot black" data-glossary="Aesthetic Capital: The value of appearing a certain way. It can reproduce exclusion or be critically reclaimed."></div>
-  <div class="logo-dot green" data-glossary="Social Capital: The privilege of being networked or familiar. Redistribution is key to inclusion."></div>
-  <div class="logo-dot black" data-glossary="Resource Sharing: Giving time, tools, and access based on need — not charity, but responsibility."></div>
-  <div class="logo-dot black" data-glossary="Co-creation: Making together with shared authorship. It resists extraction and celebrates collaboration."></div>
-
-  <div class="logo-dot black" data-glossary="Non-extractive Collaboration: Working without taking — based on consent, credit, and continuity."></div>
-  <div class="logo-dot black" data-glossary="Collective Well-being: A commitment to sustaining care, energy, and health across a network — not just individuals."></div>
-  <div class="logo-dot black" data-glossary="Relational Practice: Building through long-term trust and shared time — not just outcomes."></div>
-  <div class="logo-dot black" data-glossary="Sisterhood: A solidarity between women, queer, and caste-oppressed creatives — rooted in difference, care, and survival."></div>
-  <div class="logo-dot black" data-glossary="Kolam as Method: Kolam is repeated, erased, and redrawn. It’s a curatorial form for care, iteration, and making together."></div>
-</div> 
- <div style="height: 100px;"></div>
-
- </section>
-<section class="calendar-section">
-  <div class="calendar-heading">கால-வெளி/Timeline</div>
-  <div class="calendar-scroll" id="calendarScroll">
-    <div class="calendar-timeline" id="calendarTimeline"></div>
-  </div>
-</section>
+  <section class="calendar-section">
+    <div class="calendar-heading">கால-வெளி / Timeline</div>
+    <div class="calendar-scroll" id="calendarScroll">
+      <div class="calendar-timeline" id="calendarTimeline"></div>
+    </div>
+  </section>
 
   <section id="threshold">
     <h2 class="section-heading">வாசல் / Threshold</h2>
     <p style="padding-left: 60px;">Content for threshold section goes here...</p>
   </section>
 
-  <section id="kolamnotebook">
-    <h2 class="section-heading">கோல.நோட்டு / Kolam Notebook</h2>
-    <p style="padding-left: 60px;">Content for kolam notebook section goes here...</p>
-  </section>
+  <!-- Hover Script -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const logoDots = document.querySelectorAll('.logo-dot');
+      logoDots.forEach(dot => {
+        const text = dot.getAttribute('data-glossary');
+        if (text) {
+          const popup = document.createElement('div');
+          popup.classList.add('dot-popup');
+          popup.innerText = text;
+          document.body.appendChild(popup);
 
-  <section id="resources">
-    <h2 class="section-heading">கொஞ்சம் மாவு தரியா / Resources</h2>
-    <p style="padding-left: 60px;">Content for resources section goes here...</p>
-  </section>
+          dot.addEventListener('mouseenter', e => {
+            popup.style.display = 'block';
+            popup.style.left = `${e.pageX}px`;
+            popup.style.top = `${e.pageY + 10}px`;
+          });
 
-  <section id="aesthetics">
-    <h2 class="section-heading"></h2>
-    <div class="gallery-container" style="overflow-x: auto; white-space: nowrap; padding-left: 60px;">
-      <img src="Image3.jpg" alt="gallery image 3">
-      <img src="Image5.jpg" alt="gallery image 5">
-      <img src="Image6.jpg" alt="gallery image 6">
-      <img src="Image16.jpg" alt="gallery image 16">
-      <img src="Image10.jpg" alt="gallery image 10">
-      <img src="Image21.jpg" alt="gallery image 21">
-      <img src="Image22.jpg" alt="gallery image 22">
-      <img src="Image19.jpg" alt="gallery image 19">
-      <img src="Image28.jpg" alt="gallery image 28">
-      <img src="Image26.jpg" alt="gallery image 26">
-      <img src="Image29.jpg" alt="gallery image 29">
-      <img src="Image30.jpg" alt="gallery image 30">
-    </div>
-  </section>
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const timeline = document.getElementById('calendarTimeline');
-    const scrollContainer = document.getElementById('calendarScroll');
-    if (!timeline || !scrollContainer) return;
+          dot.addEventListener('mousemove', e => {
+            popup.style.left = `${e.pageX}px`;
+            popup.style.top = `${e.pageY + 10}px`;
+          });
 
-    const daysToShow = 120;
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const monthLangs = {
-      en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    };
-    const currentLang = 'en';
-
-    const eventData = [
-      { date: '2025-04-14', duration: 3, title: 'Mallipoo Machines', link: '#kolamnotebook', type: 'notebook' },
-      { date: '2025-06-10', duration: 2, title: 'Aasai', link: '#kolamnotebook', type: 'notebook' },
-      { date: '2025-05-02', duration: 1, title: 'Launch', link: '#resources', type: 'resources' },
-    ];
-let prevMonth = -1;
-
-    for (let i = 0; i < daysToShow; i++) {
-      const day = new Date(today);
-      day.setDate(today.getDate() + i);
-
-      const dayDiv = document.createElement('div');
-      const isWeekend = day.getDay() === 0 || day.getDay() === 6;
-   const showMonth = i === 0 || day.getDate() === 1 || prevMonth !== day.getMonth();
-const monthLabel = showMonth ? monthLangs[currentLang][day.getMonth()] : '';
-prevMonth = day.getMonth();
-
-
-
-      dayDiv.className = 'calendar-date';
-      if (isWeekend) dayDiv.classList.add('weekend');
-      dayDiv.dataset.month = monthLabel;
-      dayDiv.textContent = day.getDate().toString().padStart(2, '0');
-      timeline.appendChild(dayDiv);
-
-      if (i === 0) {
-        const todayLine = document.createElement('div');
-        todayLine.className = 'today-marker';
-        todayLine.style.left = `${i * 60}px`;
-        timeline.appendChild(todayLine);
-      }
-    }
-
-    eventData.forEach(event => {
-      const eventDate = new Date(event.date);
-      eventDate.setHours(0, 0, 0, 0);
-      const diffTime = eventDate.getTime() - today.getTime();
-      const dayOffset = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-      if (dayOffset >= 0 && dayOffset < daysToShow) {
-        const eventEl = document.createElement('a');
-        eventEl.href = event.link;
-        eventEl.className = `calendar-event event-${event.type}`;
-        eventEl.textContent = event.title;
-        eventEl.style.left = `${dayOffset * 60}px`;
-        eventEl.style.width = `${event.duration * 60 - 10}px`;
-        timeline.appendChild(eventEl);
-      }
+          dot.addEventListener('mouseleave', () => {
+            popup.style.display = 'none';
+          });
+        }
+      });
     });
 
-    scrollContainer.scrollLeft = 30 * 60 - (scrollContainer.offsetWidth / 2) + 30;
-  });
-</script>
-
-
-  <script>
+    // Drawing functionality
     const canvas = document.getElementById('drawCanvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     ctx.lineWidth = 3;
     ctx.lineCap = 'round';
-    ctx.strokeStyle = 'rgba(0, 0, 0, 0.8)';
-
-    let isDrawing = false;
-    let drawingEnabled = false;
+    ctx.strokeStyle = 'rgba(0,0,0,0.8)';
+    let isDrawing = false, drawingEnabled = false;
 
     function enableDrawing(state) {
       drawingEnabled = state;
@@ -704,65 +354,5 @@ prevMonth = day.getMonth();
     canvas.addEventListener('mouseup', () => isDrawing = false);
     canvas.addEventListener('mouseleave', () => isDrawing = false);
   </script>
-
- <style>
-  
- .glossary-text {
-  display: none;
-  position: absolute;
-  top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-  width: 280px;
-  background: white;
-  border: 1px solid #1e3a8a;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 0.8rem;
-  line-height: 1.4;
-  font-family: 'ShareTechMono-Regular', monospace;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.dot:hover .glossary-text {
-  display: block;
-}
- </style>
- <!-- Draw Buttons -->
-<div class="draw-tools" style="margin-top: 10px; z-index: 10; position: relative;">
-  <button onclick="enableDrawing(true)">Draw</button>
-  <button onclick="enableDrawing(false)">Erase</button>
-</div>
-
-<script>
-  const logoDots = document.querySelectorAll('.logo-dot');
-
-  logoDots.forEach(dot => {
-    const text = dot.getAttribute('data-glossary');
-    if (text) {
-      const popup = document.createElement('div');
-      popup.classList.add('dot-popup');
-      popup.innerText = text;
-      popup.style.display = 'none';
-      document.body.appendChild(popup);
-
-      dot.addEventListener('mouseenter', e => {
-        popup.style.left = `${e.clientX}px`;
-        popup.style.top = `${e.clientY + 10}px`;
-        popup.style.display = 'block';
-      });
-
-      dot.addEventListener('mousemove', e => {
-        popup.style.left = `${e.clientX}px`;
-        popup.style.top = `${e.clientY + 10}px`;
-      });
-
-      dot.addEventListener('mouseleave', () => {
-        popup.style.display = 'none';
-      });
-    }
-  });
-</script>
 </body>
 </html>
